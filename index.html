@@ -126,6 +126,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <a href="#expenses">Expenses</a>
     <a href="#complaints">Complaints</a>
     <a href="#events">Events and media</a>
+    <a href="#map">Colony map</a>
     <a href="#backup">If the app stops</a>
     <a href="#handover">Handover</a>
     <a href="#who">Who can do what</a>
@@ -141,6 +142,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>Complaints</h3><p>Any member can raise a complaint with photos or videos. Everyone can reply. The time taken to fix it is recorded.</p></div>
     <div class="part"><h3>Events</h3><p>Upcoming and past colony events, with their photos and videos.</p></div>
     <div class="part"><h3>Members list</h3><p>The president decides who has access and what each person can do. Only the president and committee see this list.</p></div>
+    <div class="part"><h3>Colony map</h3><p>A zoomable map of the colony with every plot labelled. Search by plot number or member name, and tap a plot to see its details.</p></div>
   </div>
   <p class="muted">The app only records things. No money moves through it.</p>
 </section>
@@ -265,6 +267,18 @@ footer { color: var(--muted); font-size: 0.9rem; }
   </ul>
 </section>
 
+<section id="map">
+  <h2>The colony map</h2>
+  <p>The colony map we already have becomes one part of this app. It is the same map and the same plot layout, now opened with your Gmail sign-in instead of a shared password.</p>
+  <ul class="plain">
+    <li>Zoom and move around the full layout of Sai Ram Enclave, with each plot labelled.</li>
+    <li>Search by plot number or member name. Tap a plot to see who lives there and which way the house is estimated to face.</li>
+    <li>Plots link to the rest of the app, for example to see the complaints raised for a plot (proposed).</li>
+    <li>The map is still being completed. Some plots, such as A-61 to A-68, need to be placed, and a few members' plots are not located yet.</li>
+  </ul>
+  <p class="note">The map today shows members' mobile numbers. Whether the app shows mobile numbers, and to whom, is for the committee to decide.</p>
+</section>
+
 <section id="backup">
   <h2>If the app stops working</h2>
   <p>The app is only a window on top of our Google Drive files. If it stops for any reason, nothing is lost. Every member already has view access to the same files in Google Drive and can read them directly using their own Gmail.</p>
@@ -318,6 +332,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
         <tr><td>Change a complaint's stage (proposed)</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
         <tr><td>Create events, upload photos and videos</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
         <tr><td>Remove a comment</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
+                <tr><td>See the colony map and plot owners' names</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>See mobile numbers on the map</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
         <tr><td>Add or remove members, set roles</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
         <tr><td>Read the change log</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
       </tbody>
@@ -332,7 +348,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>The rules are checked by the app every time, not just on the screen.</li>
     <li>Payment screenshots show phone numbers and UPI IDs, and every member can see them. The committee should be comfortable with that.</li>
     <li>Complaints and comments are visible to all members.</li>
-    <li>The colony map and election voting are not part of this first version.</li>
+    <li>Election voting is not part of this first version.</li>
   </ul>
 </section>
 
@@ -342,6 +358,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>Who can create events and upload photos and videos.</li>
     <li>Who can remove a comment.</li>
     <li>The video size limit.</li>
+    <li>Whether mobile numbers appear on the map, and who can see them.</li>
     <li>Whether every member is happy for payment screenshots to be visible to all.</li>
     <li>Who keeps the second copy of the sign-in backup codes.</li>
   </ul>
@@ -364,6 +381,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <a href="#te-expenses">ఖర్చులు</a>
     <a href="#te-complaints">ఫిర్యాదులు</a>
     <a href="#te-events">కార్యక్రమాలు, మీడియా</a>
+    <a href="#te-map">కాలనీ మ్యాప్</a>
     <a href="#te-backup">యాప్ ఆగిపోతే</a>
     <a href="#te-handover">బాధ్యతల మార్పు</a>
     <a href="#te-who">ఎవరు ఏం చేయగలరు</a>
@@ -379,6 +397,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>ఫిర్యాదులు</h3><p>ఏ సభ్యుడైనా ఫోటోలు లేదా వీడియోలతో ఫిర్యాదు చేయవచ్చు. అందరూ స్పందించవచ్చు. పరిష్కారానికి పట్టిన సమయం నమోదవుతుంది.</p></div>
     <div class="part"><h3>కార్యక్రమాలు</h3><p>రాబోయే, జరిగిన కాలనీ కార్యక్రమాలు, వాటి ఫోటోలు, వీడియోలు.</p></div>
     <div class="part"><h3>సభ్యుల జాబితా</h3><p>ఎవరు యాప్ వాడవచ్చు, ఎవరు ఏం చేయవచ్చు అనేది అధ్యక్షుడు నిర్ణయిస్తారు. ఈ జాబితాను అధ్యక్షుడు, కమిటీ మాత్రమే చూడగలరు.</p></div>
+    <div class="part"><h3>కాలనీ మ్యాప్</h3><p>ప్రతి ప్లాట్ పేరుతో కాలనీ మ్యాప్, జూమ్ చేయవచ్చు. ప్లాట్ నంబర్ లేదా సభ్యుని పేరుతో వెతకవచ్చు, ప్లాట్ నొక్కితే వివరాలు కనిపిస్తాయి.</p></div>
   </div>
   <p class="muted">ఈ యాప్ కేవలం రికార్డు చేస్తుంది. దీని ద్వారా డబ్బు బదిలీ జరగదు.</p>
 </section>
@@ -503,6 +522,18 @@ footer { color: var(--muted); font-size: 0.9rem; }
   </ul>
 </section>
 
+<section id="te-map">
+  <h2>కాలనీ మ్యాప్</h2>
+  <p>ఇప్పటికే ఉన్న కాలనీ మ్యాప్ ఈ యాప్‌లో ఒక భాగం అవుతుంది. అదే మ్యాప్, అదే ప్లాట్ల అమరిక. ఇకపై ఉమ్మడి పాస్‌వర్డ్‌కు బదులు మీ Gmail సైన్ ఇన్ తో తెరుచుకుంటుంది.</p>
+  <ul class="plain">
+    <li>సాయి రామ్ ఎన్‌క్లేవ్ పూర్తి లేఅవుట్‌ను జూమ్ చేసి, కదిలిస్తూ చూడవచ్చు. ప్రతి ప్లాట్‌కు నంబర్ ఉంటుంది.</li>
+    <li>ప్లాట్ నంబర్ లేదా సభ్యుని పేరుతో వెతకండి. ప్లాట్ నొక్కితే అక్కడ ఎవరు ఉంటారో, ఇల్లు ఏ వైపు చూస్తుందో (అంచనా) కనిపిస్తుంది.</li>
+    <li>ప్లాట్లు యాప్‌లోని మిగతా భాగాలతో కలుస్తాయి, ఉదాహరణకు ఒక ప్లాట్ కోసం వచ్చిన ఫిర్యాదులు చూడటం (ప్రతిపాదన).</li>
+    <li>మ్యాప్ ఇంకా పూర్తవుతోంది. A-61 నుండి A-68 వంటి కొన్ని ప్లాట్లను ఇంకా గుర్తించాలి, కొందరు సభ్యుల ప్లాట్లు కూడా ఇంకా కనుగొనబడలేదు.</li>
+  </ul>
+  <p class="note">ఈ రోజు మ్యాప్‌లో సభ్యుల మొబైల్ నంబర్లు కనిపిస్తున్నాయి. యాప్‌లో మొబైల్ నంబర్లు చూపాలా, ఎవరికి చూపాలా అనేది కమిటీ నిర్ణయించాలి.</p>
+</section>
+
 <section id="te-backup">
   <h2>యాప్ పనిచేయకపోతే</h2>
   <p>యాప్ మన Google Drive ఫైళ్లపై ఒక కిటికీ మాత్రమే. ఏ కారణంతోనైనా ఆగిపోయినా, ఏదీ పోదు. ప్రతి సభ్యునికీ అవే ఫైళ్లను Google Drive లో చూసే అనుమతి ఇప్పటికే ఉంటుంది. తమ Gmail తో నేరుగా చదవవచ్చు.</p>
@@ -556,6 +587,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
         <tr><td>ఫిర్యాదు దశను మార్చడం (ప్రతిపాదన)</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
         <tr><td>కార్యక్రమాలు సృష్టించడం, ఫోటోలు, వీడియోలు అప్‌లోడ్ చేయడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
         <tr><td>వ్యాఖ్యను తొలగించడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
+                <tr><td>కాలనీ మ్యాప్, ప్లాట్ యజమానుల పేర్లు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>మ్యాప్‌లో మొబైల్ నంబర్లు చూడటం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
         <tr><td>సభ్యులను చేర్చడం, తొలగించడం, పాత్రలు నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
         <tr><td>మార్పుల లాగ్ చదవడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
       </tbody>
@@ -570,7 +603,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>నియమాలను స్క్రీన్‌పై మాత్రమే కాదు, యాప్ ప్రతిసారీ తనిఖీ చేస్తుంది.</li>
     <li>చెల్లింపు స్క్రీన్‌షాట్‌లలో ఫోన్ నంబర్లు, UPI IDలు కనిపిస్తాయి, ప్రతి సభ్యుడూ వాటిని చూడగలరు. దీనికి కమిటీ అంగీకరించాలి.</li>
     <li>ఫిర్యాదులు, వ్యాఖ్యలు సభ్యులందరికీ కనిపిస్తాయి.</li>
-    <li>కాలనీ మ్యాప్, ఎన్నికల ఓటింగ్ ఈ మొదటి వెర్షన్‌లో భాగం కావు.</li>
+    <li>ఎన్నికల ఓటింగ్ ఈ మొదటి వెర్షన్‌లో భాగం కాదు.</li>
   </ul>
 </section>
 
@@ -580,6 +613,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>కార్యక్రమాలు సృష్టించి, ఫోటోలు, వీడియోలు అప్‌లోడ్ చేసేదెవరు.</li>
     <li>వ్యాఖ్యను తొలగించగలిగేదెవరు.</li>
     <li>వీడియో పరిమాణ పరిమితి.</li>
+    <li>మ్యాప్‌లో మొబైల్ నంబర్లు కనిపించాలా, ఎవరికి కనిపించాలి.</li>
     <li>చెల్లింపు స్క్రీన్‌షాట్‌లు అందరికీ కనిపించడానికి అందరూ అంగీకరిస్తారా.</li>
     <li>సైన్-ఇన్ బ్యాకప్ కోడ్‌ల రెండో కాపీని ఎవరు ఉంచుకుంటారు.</li>
   </ul>
