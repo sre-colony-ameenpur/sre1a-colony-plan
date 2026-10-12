@@ -1,0 +1,613 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>SRE 1A Colony App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&display=swap">
+<style>
+/* Layout: one calm reading column, a heading per topic, one diagram per mechanism, plain-language text beside it. */
+:root {
+  --bg: #F2F5F3;
+  --surface: #FFFFFF;
+  --fg: #15251F;
+  --muted: #4D6159;
+  --line: #C9D5CF;
+  --accent: #0B6B5D;
+  --accent-soft: #D6EBE5;
+  --accent-ink: #FFFFFF;
+  --warn: #A85A00;
+  --warn-soft: #FBE8CC;
+  --bad: #A12D2D;
+  --bad-soft: #F6DADA;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1714; --surface: #14231E; --fg: #E6F0EB; --muted: #9DB3A9; --line: #2A3F37;
+    --accent: #4FC2AC; --accent-soft: #123A32; --accent-ink: #06201B;
+    --warn: #F0A64A; --warn-soft: #3A2A10; --bad: #F08A8A; --bad-soft: #3A1818;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1714; --surface: #14231E; --fg: #E6F0EB; --muted: #9DB3A9; --line: #2A3F37;
+  --accent: #4FC2AC; --accent-soft: #123A32; --accent-ink: #06201B;
+  --warn: #F0A64A; --warn-soft: #3A2A10; --bad: #F08A8A; --bad-soft: #3A1818;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; padding-inline: 16px; padding-block: 28px 56px; }
+.wrap { max-width: 720px; margin-inline: auto; display: flex; flex-direction: column; gap: 56px; }
+h1, h2 { font-family: var(--display); line-height: 1.12; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.5rem, 4.5vw, 2rem); font-weight: 700; }
+h3 { font-size: 1.05rem; margin: 0 0 4px; font-weight: 700; }
+p { margin: 0; max-width: 65ch; }
+section { display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.2rem; max-width: 55ch; }
+.muted { color: var(--muted); }
+header { display: flex; flex-direction: column; gap: 14px; }
+nav { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.95rem; }
+nav a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+.parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.part { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.part p { font-size: 0.97rem; color: var(--muted); }
+
+figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.dia-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; overflow-x: auto; }
+svg.dia { display: block; width: 100%; max-width: 460px; height: auto; margin-inline: auto; color: var(--fg); }
+figcaption { font-size: 0.95rem; color: var(--muted); max-width: 65ch; }
+svg text { fill: var(--fg); font-family: var(--body); }
+svg .t1 { font-size: 14px; font-weight: 700; }
+svg .t2 { font-size: 12px; fill: var(--muted); }
+svg .lab { font-size: 12px; fill: var(--muted); }
+svg .n { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+svg .n-a { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+svg .n-w { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1.5; }
+svg .n-b { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 1.5; }
+svg .n-box { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 5 4; }
+svg .ln { stroke: var(--fg); stroke-width: 1.6; fill: none; }
+svg .ln-d { stroke: var(--muted); stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; }
+
+ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+ol.steps li { counter-increment: s; display: grid; grid-template-columns: 2.1rem 1fr; gap: 12px; align-items: start; }
+ol.steps li::before { content: counter(s); width: 2.1rem; height: 2.1rem; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-weight: 700; display: grid; place-items: center; }
+ol.steps li span { padding-top: 2px; }
+
+ul.plain { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 6px; max-width: 65ch; }
+.note { border-left: 4px solid var(--warn); background: var(--warn-soft); padding: 12px 16px; border-radius: 0 8px 8px 0; max-width: 65ch; }
+.good { border-left-color: var(--accent); background: var(--accent-soft); }
+
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.95rem; }
+th, td { padding: 10px 12px; text-align: center; border-bottom: 1px solid var(--line); }
+th:first-child, td:first-child { text-align: left; }
+th { font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+.y { color: var(--accent); font-weight: 700; }
+.n0 { color: var(--muted); }
+.q { color: var(--warn); font-weight: 700; }
+
+footer { color: var(--muted); font-size: 0.9rem; }
+
+[hidden] { display: none !important; }
+.wrap { font-family: var(--body); }
+.langbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; max-width: 720px; margin: 0 auto 20px; padding-block: 8px; background: var(--bg); display: flex; justify-content: flex-end; }
+.seg { display: inline-flex; border: 1.5px solid var(--accent); border-radius: 999px; overflow: hidden; }
+.seg button { font: inherit; font-size: 0.95rem; font-weight: 600; padding: 7px 18px; border: 0; background: transparent; color: var(--accent); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.seg button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+[lang="te"] { --display: "Noto Sans Telugu", "Nirmala UI", "Gautami", system-ui, sans-serif; --body: "Noto Sans Telugu", "Nirmala UI", "Gautami", system-ui, sans-serif; line-height: 1.8; font-size: 16px; }
+[lang="te"] h1, [lang="te"] h2 { line-height: 1.45; }
+[lang="te"] h1 { font-size: clamp(1.9rem, 6.5vw, 2.8rem); }
+[lang="te"] h2 { font-size: clamp(1.35rem, 4.2vw, 1.8rem); }
+[lang="te"] .eyebrow, [lang="te"] th { letter-spacing: 0; text-transform: none; }
+</style>
+
+<div class="langbar"><div class="seg" role="group" aria-label="Language / భాష">
+  <button type="button" id="btn-en" aria-pressed="true">English</button>
+  <button type="button" id="btn-te" aria-pressed="false">తెలుగు</button>
+</div></div>
+
+<div class="wrap" id="en" lang="en">
+
+<header>
+  <span class="eyebrow">Sai Ram Enclave, Ameenpur</span>
+  <h1>SRE 1A Colony App</h1>
+  <p class="lede">One simple app for our colony. Expenses, complaints, events and photos in one place, open to every member, and free to run.</p>
+  <nav aria-label="Sections">
+    <a href="#what">What it does</a>
+    <a href="#picture">How it fits together</a>
+    <a href="#signin">Signing in</a>
+    <a href="#expenses">Expenses</a>
+    <a href="#complaints">Complaints</a>
+    <a href="#events">Events and media</a>
+    <a href="#backup">If the app stops</a>
+    <a href="#handover">Handover</a>
+    <a href="#who">Who can do what</a>
+    <a href="#decide">To decide</a>
+  </nav>
+</header>
+
+<section id="what">
+  <h2>What it does</h2>
+  <p>Everything is open to every member to read, so nothing is hidden and everyone can see how colony money and issues are handled. Only a few people can add or change things.</p>
+  <div class="parts">
+    <div class="part"><h3>Expenses</h3><p>Every colony expense with its amount, reason and PhonePe payment screenshot. The treasurer enters it and the president approves it.</p></div>
+    <div class="part"><h3>Complaints</h3><p>Any member can raise a complaint with photos or videos. Everyone can reply. The time taken to fix it is recorded.</p></div>
+    <div class="part"><h3>Events</h3><p>Upcoming and past colony events, with their photos and videos.</p></div>
+    <div class="part"><h3>Members list</h3><p>The president decides who has access and what each person can do. Only the president and committee see this list.</p></div>
+  </div>
+  <p class="muted">The app only records things. No money moves through it.</p>
+</section>
+
+<section id="picture">
+  <h2>How it fits together</h2>
+  <p>You use a website on your phone. It reads and saves everything in the colony's own Google Drive, which belongs to one colony Gmail account. Your data is not on anyone's personal computer.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 450 392" role="img" aria-label="Members open the app, the app reads and saves in the colony Google Drive, and members can also open the Drive files directly as a view-only backup.">
+        <defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="115" y="10" width="210" height="56" rx="10"/>
+        <text class="t1" x="220" y="34" text-anchor="middle">Colony members</text>
+        <text class="t2" x="220" y="53" text-anchor="middle">phone or computer, Gmail login</text>
+        <line class="ln" x1="220" y1="66" x2="220" y2="120" marker-end="url(#a1)"/>
+        <text class="lab" x="232" y="98">open the app</text>
+        <rect class="n-a" x="115" y="122" width="210" height="56" rx="10"/>
+        <text class="t1" x="220" y="146" text-anchor="middle">The colony app</text>
+        <text class="t2" x="220" y="165" text-anchor="middle">a free website</text>
+        <line class="ln" x1="220" y1="178" x2="220" y2="232" marker-end="url(#a1)"/>
+        <text class="lab" x="232" y="210">reads and saves</text>
+        <rect class="n-box" x="20" y="234" width="400" height="150" rx="12"/>
+        <text class="t2" x="34" y="254">Colony Google Drive (owned by the sre1a Gmail)</text>
+        <rect class="n" x="36" y="266" width="180" height="46" rx="8"/><text class="t1" x="126" y="294" text-anchor="middle">Expenses sheet</text>
+        <rect class="n" x="224" y="266" width="180" height="46" rx="8"/><text class="t1" x="314" y="294" text-anchor="middle">Complaints sheet</text>
+        <rect class="n" x="36" y="322" width="180" height="46" rx="8"/><text class="t1" x="126" y="350" text-anchor="middle">Events sheet</text>
+        <rect class="n" x="224" y="322" width="180" height="46" rx="8"/><text class="t1" x="314" y="350" text-anchor="middle">Photos and videos</text>
+        <path class="ln-d" d="M325 38 H440 V300 H421" marker-end="url(#a1)"/>
+        <text class="lab" x="428" y="190" text-anchor="middle" transform="rotate(-90 428 190)">backup: view files directly</text>
+      </svg>
+    </div>
+    <figcaption>Solid arrows are the normal route. The dashed arrow is the backup route: every member can also open the same files in Google Drive, view only.</figcaption>
+  </figure>
+</section>
+
+<section id="signin">
+  <h2>Signing in</h2>
+  <p>You sign in with your own Gmail. There is no new password to remember.</p>
+  <ol class="steps">
+    <li><span>The president adds your Gmail address to the members list.</span></li>
+    <li><span>The president tells you on WhatsApp. You do not get an email from Google.</span></li>
+    <li><span>Open the app link on your phone and tap "Sign in with Google".</span></li>
+    <li><span>Pick the Gmail the president added. You are in.</span></li>
+  </ol>
+  <p class="muted">If your Gmail is not on the list, the app shows "No access". If you leave the colony or sell your plot, the president removes you and access stops at once.</p>
+</section>
+
+<section id="expenses">
+  <h2>Expenses need two people</h2>
+  <p>The treasurer enters an expense. It only counts once the president approves it. The person who enters an expense cannot be the one who approves it.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 392" role="img" aria-label="Treasurer enters an expense, it waits for approval, the president checks it, and it is either approved and counted or rejected with a reason.">
+        <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="100" y="10" width="240" height="56" rx="10"/>
+        <text class="t1" x="220" y="34" text-anchor="middle">Treasurer enters the expense</text>
+        <text class="t2" x="220" y="53" text-anchor="middle">amount, reason, PhonePe screenshot</text>
+        <line class="ln" x1="220" y1="66" x2="220" y2="112" marker-end="url(#a2)"/>
+        <rect class="n-w" x="100" y="114" width="240" height="50" rx="10"/>
+        <text class="t1" x="220" y="137" text-anchor="middle">Waiting for approval</text>
+        <text class="t2" x="220" y="154" text-anchor="middle">visible to all, not counted yet</text>
+        <line class="ln" x1="220" y1="164" x2="220" y2="210" marker-end="url(#a2)"/>
+        <rect class="n" x="100" y="212" width="240" height="56" rx="10"/>
+        <text class="t1" x="220" y="236" text-anchor="middle">President checks it</text>
+        <text class="t2" x="220" y="255" text-anchor="middle">against the screenshot</text>
+        <line class="ln" x1="165" y1="268" x2="120" y2="324" marker-end="url(#a2)"/>
+        <line class="ln" x1="275" y1="268" x2="320" y2="324" marker-end="url(#a2)"/>
+        <rect class="n-a" x="20" y="326" width="190" height="52" rx="10"/>
+        <text class="t1" x="115" y="349" text-anchor="middle">Approved</text>
+        <text class="t2" x="115" y="367" text-anchor="middle">added to the totals</text>
+        <rect class="n-b" x="230" y="326" width="190" height="52" rx="10"/>
+        <text class="t1" x="325" y="349" text-anchor="middle">Rejected</text>
+        <text class="t2" x="325" y="367" text-anchor="middle">reason shown, not counted</text>
+      </svg>
+    </div>
+    <figcaption>An expense moves through three states. Only approved expenses are added to the colony totals.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>An approved entry is never edited. A mistake is fixed with a new correcting entry, so the old record stays visible.</li>
+    <li>Every member can see every expense line and its payment screenshot.</li>
+  </ul>
+</section>
+
+<section id="complaints">
+  <h2>Complaints, with a clock</h2>
+  <p>Any member can raise a complaint and attach photos or videos. The app notes the time at every step, so everyone can see how long a problem took to fix.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 404" role="img" aria-label="A complaint moves from Open to Acknowledged, In progress, Resolved and Closed, and anyone can add comments along the way.">
+        <line class="ln" x1="34" y1="42" x2="34" y2="338"/>
+        <circle class="n-w" cx="34" cy="40" r="12"/>
+        <text class="t1" x="62" y="38">Open</text><text class="t2" x="62" y="56">raised by any member</text>
+        <circle class="n-a" cx="34" cy="116" r="12"/>
+        <text class="t1" x="62" y="114">Acknowledged</text><text class="t2" x="62" y="132">the committee has seen it</text>
+        <circle class="n-a" cx="34" cy="192" r="12"/>
+        <text class="t1" x="62" y="190">In progress</text><text class="t2" x="62" y="208">work has started</text>
+        <circle class="n-a" cx="34" cy="268" r="12"/>
+        <text class="t1" x="62" y="266">Resolved</text><text class="t2" x="62" y="284">the fix is done</text>
+        <circle class="n-a" cx="34" cy="344" r="12"/>
+        <text class="t1" x="62" y="342">Closed</text><text class="t2" x="62" y="360">kept in history</text>
+        <rect class="n" x="300" y="106" width="130" height="104" rx="10"/>
+        <text class="t1" x="365" y="132" text-anchor="middle">Comments</text>
+        <text class="t2" x="365" y="152" text-anchor="middle">anyone can reply</text>
+        <text class="t2" x="365" y="170" text-anchor="middle">with text, photos</text>
+        <text class="t2" x="365" y="188" text-anchor="middle">and videos</text>
+        <path class="ln-d" d="M300 158 H250"/>
+        <text class="lab" x="62" y="394">Every step is stamped with date and time</text>
+      </svg>
+    </div>
+    <figcaption>A complaint passes through five stages. Comments can be added at any stage.</figcaption>
+  </figure>
+  <p class="muted">All complaints and replies are visible to every member. Please keep comments polite and about the issue.</p>
+</section>
+
+<section id="events">
+  <h2>Events, photos and videos</h2>
+  <ul class="plain">
+    <li>Events are listed with date, details and their photos and videos.</li>
+    <li>Photos are shrunk automatically when you upload them, so nobody has to resize anything and our free storage lasts for years.</li>
+    <li>Videos open in Google Drive's own player. You must be signed in to Drive with the Gmail the president added.</li>
+    <li>Our free storage is 15 GB. Video files will have a size limit, about 100 MB, to be confirmed.</li>
+  </ul>
+</section>
+
+<section id="backup">
+  <h2>If the app stops working</h2>
+  <p>The app is only a window on top of our Google Drive files. If it stops for any reason, nothing is lost. Every member already has view access to the same files in Google Drive and can read them directly using their own Gmail.</p>
+  <div class="note good">View only. Members cannot change or delete files. Only the app, which follows the rules above, can add or change records.</div>
+</section>
+
+<section id="handover">
+  <h2>Who looks after it, and handover</h2>
+  <p>All files sit under one permanent colony Gmail account. The president holds its keys. When a new president is elected, the keys pass on and nothing else changes.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 262" role="img" aria-label="The permanent colony Gmail account stays the same. Every two years the outgoing president loses access and the new president gains admin access and becomes the recovery contact.">
+        <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n-a" x="80" y="10" width="280" height="58" rx="10"/>
+        <text class="t1" x="220" y="34" text-anchor="middle">sre1a-colony@gmail.com</text>
+        <text class="t2" x="220" y="53" text-anchor="middle">permanent owner of every file</text>
+        <path class="ln-d" d="M130 68 L90 150"/>
+        <line class="ln" x1="310" y1="68" x2="350" y2="148" marker-end="url(#a4)"/>
+        <text class="lab" x="342" y="112">holds the keys</text>
+        <rect class="n" x="10" y="152" width="160" height="82" rx="10" style="stroke-dasharray:5 4"/>
+        <text class="t1" x="90" y="178" text-anchor="middle">Outgoing president</text>
+        <text class="t2" x="90" y="198" text-anchor="middle">access removed</text>
+        <rect class="n-a" x="270" y="152" width="160" height="82" rx="10"/>
+        <text class="t1" x="350" y="178" text-anchor="middle">New president</text>
+        <text class="t2" x="350" y="198" text-anchor="middle">admin access and</text>
+        <text class="t2" x="350" y="215" text-anchor="middle">recovery email and phone</text>
+        <line class="ln" x1="170" y1="193" x2="268" y2="193" marker-end="url(#a4)"/>
+        <text class="lab" x="219" y="184" text-anchor="middle">every 2 years</text>
+      </svg>
+    </div>
+    <figcaption>The account never changes. Only the person who holds its keys changes, every two years.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>At handover the account's recovery email, phone and sign-in codes are changed to the new president's, and the old president's are removed.</li>
+    <li>A second committee member keeps a sealed copy of the backup codes, in case the president's phone is lost.</li>
+    <li>Everything done in the app is written to a change log: who did what and when. Only the president and committee can read it.</li>
+  </ul>
+</section>
+
+<section id="who">
+  <h2>Who can do what</h2>
+  <p>The committee is the President, Vice President, General Secretary, Joint Secretary and Treasurer. "To decide" means the committee needs to choose.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Action</th><th>Member</th><th>Treasurer</th><th>President</th><th>VP, GS, JS</th></tr></thead>
+      <tbody>
+        <tr><td>See expenses, complaints, events, photos</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Raise a complaint, add a comment</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Enter an expense</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td><td class="n0">No</td></tr>
+        <tr><td>Approve an expense</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Change a complaint's stage (proposed)</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Create events, upload photos and videos</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
+        <tr><td>Remove a comment</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
+        <tr><td>Add or remove members, set roles</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Read the change log</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="privacy">
+  <h2>Privacy and safety</h2>
+  <ul class="plain">
+    <li>Only Gmail addresses on the president's list can use the app.</li>
+    <li>The rules are checked by the app every time, not just on the screen.</li>
+    <li>Payment screenshots show phone numbers and UPI IDs, and every member can see them. The committee should be comfortable with that.</li>
+    <li>Complaints and comments are visible to all members.</li>
+    <li>The colony map and election voting are not part of this first version.</li>
+  </ul>
+</section>
+
+<section id="decide">
+  <h2>What we need to decide together</h2>
+  <ul class="plain">
+    <li>Who can create events and upload photos and videos.</li>
+    <li>Who can remove a comment.</li>
+    <li>The video size limit.</li>
+    <li>Whether every member is happy for payment screenshots to be visible to all.</li>
+    <li>Who keeps the second copy of the sign-in backup codes.</li>
+  </ul>
+  <p class="note">Cost to the colony: nothing. The website hosting and the Google Drive storage used are free.</p>
+</section>
+
+<footer>Draft for discussion. Details may change after the committee meeting.</footer>
+</div>
+
+<div class="wrap" id="te" lang="te" hidden>
+
+<header>
+  <span class="eyebrow">సాయి రామ్ ఎన్‌క్లేవ్, అమీన్‌పూర్</span>
+  <h1>SRE 1A కాలనీ యాప్</h1>
+  <p class="lede">మన కాలనీ కోసం ఒక సులభమైన యాప్. ఖర్చులు, ఫిర్యాదులు, కార్యక్రమాలు, ఫోటోలు అన్నీ ఒకే చోట. ప్రతి సభ్యునికీ అందుబాటులో, నడపడానికి ఉచితం.</p>
+  <nav aria-label="విభాగాలు">
+    <a href="#te-what">ఏం చేస్తుంది</a>
+    <a href="#te-picture">ఎలా పనిచేస్తుంది</a>
+    <a href="#te-signin">సైన్ ఇన్</a>
+    <a href="#te-expenses">ఖర్చులు</a>
+    <a href="#te-complaints">ఫిర్యాదులు</a>
+    <a href="#te-events">కార్యక్రమాలు, మీడియా</a>
+    <a href="#te-backup">యాప్ ఆగిపోతే</a>
+    <a href="#te-handover">బాధ్యతల మార్పు</a>
+    <a href="#te-who">ఎవరు ఏం చేయగలరు</a>
+    <a href="#te-decide">నిర్ణయించాల్సినవి</a>
+  </nav>
+</header>
+
+<section id="te-what">
+  <h2>ఇది ఏం చేస్తుంది</h2>
+  <p>ప్రతిదీ సభ్యులందరూ చూడవచ్చు. కాబట్టి ఏదీ దాచబడదు. కాలనీ డబ్బు, సమస్యలు ఎలా నిర్వహించబడుతున్నాయో అందరూ చూడగలరు. కొత్తగా చేర్చడం, మార్చడం కొద్దిమంది మాత్రమే చేయగలరు.</p>
+  <div class="parts">
+    <div class="part"><h3>ఖర్చులు</h3><p>కాలనీ ప్రతి ఖర్చు, దాని మొత్తం, కారణం, PhonePe చెల్లింపు స్క్రీన్‌షాట్‌తో సహా. కోశాధికారి నమోదు చేస్తారు, అధ్యక్షుడు ఆమోదిస్తారు.</p></div>
+    <div class="part"><h3>ఫిర్యాదులు</h3><p>ఏ సభ్యుడైనా ఫోటోలు లేదా వీడియోలతో ఫిర్యాదు చేయవచ్చు. అందరూ స్పందించవచ్చు. పరిష్కారానికి పట్టిన సమయం నమోదవుతుంది.</p></div>
+    <div class="part"><h3>కార్యక్రమాలు</h3><p>రాబోయే, జరిగిన కాలనీ కార్యక్రమాలు, వాటి ఫోటోలు, వీడియోలు.</p></div>
+    <div class="part"><h3>సభ్యుల జాబితా</h3><p>ఎవరు యాప్ వాడవచ్చు, ఎవరు ఏం చేయవచ్చు అనేది అధ్యక్షుడు నిర్ణయిస్తారు. ఈ జాబితాను అధ్యక్షుడు, కమిటీ మాత్రమే చూడగలరు.</p></div>
+  </div>
+  <p class="muted">ఈ యాప్ కేవలం రికార్డు చేస్తుంది. దీని ద్వారా డబ్బు బదిలీ జరగదు.</p>
+</section>
+
+<section id="te-picture">
+  <h2>ఇది ఎలా కలిసి పనిచేస్తుంది</h2>
+  <p>మీరు ఫోన్‌లో ఒక వెబ్‌సైట్ వాడతారు. అది కాలనీ Google Drive లో అన్నీ చదివి, భద్రపరుస్తుంది. ఆ Drive ఒక కాలనీ Gmail ఖాతాది. మీ సమాచారం ఎవరి వ్యక్తిగత కంప్యూటర్‌లోనూ ఉండదు.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 450 392" role="img" aria-label="సభ్యులు యాప్ తెరుస్తారు, యాప్ కాలనీ Google Drive లో చదివి భద్రపరుస్తుంది. బ్యాకప్‌గా సభ్యులు Drive ఫైళ్లను నేరుగా, చూడటానికి మాత్రమే తెరవవచ్చు.">
+        <defs><marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="95" y="10" width="250" height="56" rx="10"/>
+        <text class="t1" x="220" y="34" text-anchor="middle">కాలనీ సభ్యులు</text>
+        <text class="t2" x="220" y="53" text-anchor="middle">ఫోన్/కంప్యూటర్, Gmail లాగిన్</text>
+        <line class="ln" x1="220" y1="66" x2="220" y2="120" marker-end="url(#b1)"/>
+        <text class="lab" x="232" y="98">యాప్ తెరవండి</text>
+        <rect class="n-a" x="95" y="122" width="250" height="56" rx="10"/>
+        <text class="t1" x="220" y="146" text-anchor="middle">కాలనీ యాప్</text>
+        <text class="t2" x="220" y="165" text-anchor="middle">ఉచిత వెబ్‌సైట్</text>
+        <line class="ln" x1="220" y1="178" x2="220" y2="232" marker-end="url(#b1)"/>
+        <text class="lab" x="232" y="210">చదివి, భద్రపరుస్తుంది</text>
+        <rect class="n-box" x="20" y="234" width="400" height="150" rx="12"/>
+        <text class="t2" x="34" y="254">కాలనీ Google Drive (sre1a Gmail ఖాతాది)</text>
+        <rect class="n" x="36" y="266" width="180" height="46" rx="8"/><text class="t1" x="126" y="294" text-anchor="middle">ఖర్చుల షీట్</text>
+        <rect class="n" x="224" y="266" width="180" height="46" rx="8"/><text class="t1" x="314" y="294" text-anchor="middle">ఫిర్యాదుల షీట్</text>
+        <rect class="n" x="36" y="322" width="180" height="46" rx="8"/><text class="t1" x="126" y="350" text-anchor="middle">కార్యక్రమాల షీట్</text>
+        <rect class="n" x="224" y="322" width="180" height="46" rx="8"/><text class="t1" x="314" y="350" text-anchor="middle">ఫోటోలు, వీడియోలు</text>
+        <path class="ln-d" d="M345 38 H440 V300 H421" marker-end="url(#b1)"/>
+        <text class="lab" x="428" y="190" text-anchor="middle" transform="rotate(-90 428 190)">బ్యాకప్: ఫైళ్లను నేరుగా చూడండి</text>
+      </svg>
+    </div>
+    <figcaption>గీత బాణాలు సాధారణ మార్గం. చుక్కల బాణం బ్యాకప్ మార్గం: ప్రతి సభ్యుడూ అవే ఫైళ్లను Google Drive లో, చూడటానికి మాత్రమే తెరవవచ్చు.</figcaption>
+  </figure>
+</section>
+
+<section id="te-signin">
+  <h2>సైన్ ఇన్ అవ్వడం</h2>
+  <p>మీ సొంత Gmail తో సైన్ ఇన్ అవుతారు. కొత్త పాస్‌వర్డ్ గుర్తుంచుకోవాల్సిన అవసరం లేదు.</p>
+  <ol class="steps">
+    <li><span>అధ్యక్షుడు మీ Gmail చిరునామాను సభ్యుల జాబితాలో చేరుస్తారు.</span></li>
+    <li><span>అధ్యక్షుడు మీకు WhatsApp లో తెలియజేస్తారు. Google నుండి మీకు ఇమెయిల్ రాదు.</span></li>
+    <li><span>మీ ఫోన్‌లో యాప్ లింక్ తెరిచి "Google తో సైన్ ఇన్" నొక్కండి.</span></li>
+    <li><span>అధ్యక్షుడు చేర్చిన Gmail ఎంచుకోండి. మీరు లోపలికి వెళ్తారు.</span></li>
+  </ol>
+  <p class="muted">మీ Gmail జాబితాలో లేకపోతే "అనుమతి లేదు" అని చూపిస్తుంది. మీరు కాలనీ వదిలి వెళ్తే లేదా ప్లాట్ అమ్మితే, అధ్యక్షుడు మిమ్మల్ని తొలగిస్తారు, వెంటనే మీ అనుమతి ఆగిపోతుంది.</p>
+</section>
+
+<section id="te-expenses">
+  <h2>ఖర్చులకు ఇద్దరి ఆమోదం కావాలి</h2>
+  <p>కోశాధికారి ఖర్చును నమోదు చేస్తారు. అధ్యక్షుడు ఆమోదించిన తర్వాతే అది లెక్కలోకి వస్తుంది. ఖర్చు నమోదు చేసిన వ్యక్తే దాన్ని ఆమోదించకూడదు.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 392" role="img" aria-label="కోశాధికారి ఖర్చు నమోదు చేస్తారు, అది ఆమోదం కోసం వేచి ఉంటుంది, అధ్యక్షుడు పరిశీలిస్తారు, తర్వాత ఆమోదించబడి లెక్కలోకి వస్తుంది లేదా కారణంతో తిరస్కరించబడుతుంది.">
+        <defs><marker id="b2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="70" y="10" width="300" height="56" rx="10"/>
+        <text class="t1" x="220" y="34" text-anchor="middle">కోశాధికారి ఖర్చు నమోదు చేస్తారు</text>
+        <text class="t2" x="220" y="53" text-anchor="middle">మొత్తం, కారణం, PhonePe స్క్రీన్‌షాట్</text>
+        <line class="ln" x1="220" y1="66" x2="220" y2="112" marker-end="url(#b2)"/>
+        <rect class="n-w" x="70" y="114" width="300" height="50" rx="10"/>
+        <text class="t1" x="220" y="137" text-anchor="middle">ఆమోదం కోసం వేచి ఉంది</text>
+        <text class="t2" x="220" y="154" text-anchor="middle">అందరికీ కనిపిస్తుంది, లెక్కలో లేదు</text>
+        <line class="ln" x1="220" y1="164" x2="220" y2="210" marker-end="url(#b2)"/>
+        <rect class="n" x="70" y="212" width="300" height="56" rx="10"/>
+        <text class="t1" x="220" y="236" text-anchor="middle">అధ్యక్షుడు పరిశీలిస్తారు</text>
+        <text class="t2" x="220" y="255" text-anchor="middle">స్క్రీన్‌షాట్‌తో సరిచూసి</text>
+        <line class="ln" x1="165" y1="268" x2="120" y2="324" marker-end="url(#b2)"/>
+        <line class="ln" x1="275" y1="268" x2="320" y2="324" marker-end="url(#b2)"/>
+        <rect class="n-a" x="20" y="326" width="190" height="52" rx="10"/>
+        <text class="t1" x="115" y="349" text-anchor="middle">ఆమోదించబడింది</text>
+        <text class="t2" x="115" y="367" text-anchor="middle">మొత్తాలలో కలుస్తుంది</text>
+        <rect class="n-b" x="230" y="326" width="190" height="52" rx="10"/>
+        <text class="t1" x="325" y="349" text-anchor="middle">తిరస్కరించబడింది</text>
+        <text class="t2" x="325" y="367" text-anchor="middle">కారణం చూపబడుతుంది</text>
+      </svg>
+    </div>
+    <figcaption>ఖర్చు మూడు దశల్లో సాగుతుంది. ఆమోదించిన ఖర్చులు మాత్రమే కాలనీ మొత్తాలలో కలుస్తాయి.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>ఆమోదించిన నమోదును మార్చరు. పొరపాటు ఉంటే కొత్త సవరణ నమోదు చేస్తారు, పాత రికార్డు అలాగే కనిపిస్తుంది.</li>
+    <li>ప్రతి సభ్యుడూ ప్రతి ఖర్చు వివరాన్ని, చెల్లింపు స్క్రీన్‌షాట్‌ను చూడవచ్చు.</li>
+  </ul>
+</section>
+
+<section id="te-complaints">
+  <h2>ఫిర్యాదులు, సమయం నమోదుతో</h2>
+  <p>ఏ సభ్యుడైనా ఫిర్యాదు చేసి ఫోటోలు లేదా వీడియోలు జోడించవచ్చు. ప్రతి దశలో యాప్ సమయాన్ని నమోదు చేస్తుంది. కాబట్టి సమస్య పరిష్కారానికి ఎంత సమయం పట్టిందో అందరూ చూడవచ్చు.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 404" role="img" aria-label="ఫిర్యాదు తెరవబడింది, గుర్తించబడింది, జరుగుతోంది, పరిష్కరించబడింది, ముగిసింది అనే దశల గుండా సాగుతుంది. ఎవరైనా వ్యాఖ్యలు జోడించవచ్చు.">
+        <line class="ln" x1="34" y1="42" x2="34" y2="338"/>
+        <circle class="n-w" cx="34" cy="40" r="12"/>
+        <text class="t1" x="62" y="38">తెరవబడింది</text><text class="t2" x="62" y="56">ఏ సభ్యుడైనా చేశారు</text>
+        <circle class="n-a" cx="34" cy="116" r="12"/>
+        <text class="t1" x="62" y="114">గుర్తించబడింది</text><text class="t2" x="62" y="132">కమిటీ చూసింది</text>
+        <circle class="n-a" cx="34" cy="192" r="12"/>
+        <text class="t1" x="62" y="190">జరుగుతోంది</text><text class="t2" x="62" y="208">పని మొదలైంది</text>
+        <circle class="n-a" cx="34" cy="268" r="12"/>
+        <text class="t1" x="62" y="266">పరిష్కరించబడింది</text><text class="t2" x="62" y="284">సమస్య తీరింది</text>
+        <circle class="n-a" cx="34" cy="344" r="12"/>
+        <text class="t1" x="62" y="342">ముగిసింది</text><text class="t2" x="62" y="360">చరిత్రలో భద్రం</text>
+        <rect class="n" x="280" y="106" width="150" height="104" rx="10"/>
+        <text class="t1" x="355" y="132" text-anchor="middle">వ్యాఖ్యలు</text>
+        <text class="t2" x="355" y="153" text-anchor="middle">ఎవరైనా టెక్స్ట్,</text>
+        <text class="t2" x="355" y="171" text-anchor="middle">ఫోటోలు, వీడియోలతో</text>
+        <text class="t2" x="355" y="189" text-anchor="middle">స్పందించవచ్చు</text>
+        <path class="ln-d" d="M280 158 H250"/>
+        <text class="lab" x="62" y="394">ప్రతి దశకు తేదీ, సమయం నమోదవుతుంది</text>
+      </svg>
+    </div>
+    <figcaption>ఫిర్యాదు ఐదు దశల గుండా సాగుతుంది. ఏ దశలోనైనా వ్యాఖ్యలు జోడించవచ్చు.</figcaption>
+  </figure>
+  <p class="muted">అన్ని ఫిర్యాదులు, స్పందనలు ప్రతి సభ్యునికీ కనిపిస్తాయి. దయచేసి వ్యాఖ్యలు మర్యాదగా, సమస్యకు సంబంధించినవిగా ఉంచండి.</p>
+</section>
+
+<section id="te-events">
+  <h2>కార్యక్రమాలు, ఫోటోలు, వీడియోలు</h2>
+  <ul class="plain">
+    <li>కార్యక్రమాలు తేదీ, వివరాలు, వాటి ఫోటోలు, వీడియోలతో జాబితా అవుతాయి.</li>
+    <li>ఫోటోలు అప్‌లోడ్ చేసినప్పుడు వాటంతట అవే చిన్నవి అవుతాయి. కాబట్టి ఎవరూ పరిమాణం మార్చాల్సిన పని లేదు, మన ఉచిత స్థలం సంవత్సరాల పాటు సరిపోతుంది.</li>
+    <li>వీడియోలు Google Drive సొంత ప్లేయర్‌లో తెరుచుకుంటాయి. అధ్యక్షుడు చేర్చిన Gmail తో Drive లో సైన్ ఇన్ అయి ఉండాలి.</li>
+    <li>మన ఉచిత స్థలం 15 GB. వీడియో ఫైళ్లకు పరిమితి ఉంటుంది, సుమారు 100 MB (ఖరారు కావాలి).</li>
+  </ul>
+</section>
+
+<section id="te-backup">
+  <h2>యాప్ పనిచేయకపోతే</h2>
+  <p>యాప్ మన Google Drive ఫైళ్లపై ఒక కిటికీ మాత్రమే. ఏ కారణంతోనైనా ఆగిపోయినా, ఏదీ పోదు. ప్రతి సభ్యునికీ అవే ఫైళ్లను Google Drive లో చూసే అనుమతి ఇప్పటికే ఉంటుంది. తమ Gmail తో నేరుగా చదవవచ్చు.</p>
+  <div class="note good">చూడటానికి మాత్రమే. సభ్యులు ఫైళ్లను మార్చలేరు, తొలగించలేరు. పైన చెప్పిన నియమాలను పాటించే యాప్ మాత్రమే రికార్డులను చేర్చగలదు, మార్చగలదు.</div>
+</section>
+
+<section id="te-handover">
+  <h2>ఎవరు చూసుకుంటారు, బాధ్యతల మార్పు</h2>
+  <p>అన్ని ఫైళ్లు ఒక శాశ్వత కాలనీ Gmail ఖాతా కింద ఉంటాయి. దాని తాళాలు అధ్యక్షుడి వద్ద ఉంటాయి. కొత్త అధ్యక్షుడు ఎన్నికైనప్పుడు తాళాలు మారతాయి, ఇంకేమీ మారదు.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 262" role="img" aria-label="శాశ్వత కాలనీ Gmail ఖాతా మారదు. ప్రతి రెండేళ్లకు పూర్వ అధ్యక్షుడి అనుమతి తొలగిస్తారు, కొత్త అధ్యక్షుడికి అడ్మిన్ అనుమతి, రికవరీ సంప్రదింపు ఇస్తారు.">
+        <defs><marker id="b4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n-a" x="70" y="10" width="300" height="58" rx="10"/>
+        <text class="t1" x="220" y="34" text-anchor="middle">sre1a-colony@gmail.com</text>
+        <text class="t2" x="220" y="53" text-anchor="middle">ప్రతి ఫైలుకూ శాశ్వత యజమాని</text>
+        <path class="ln-d" d="M130 68 L90 150"/>
+        <line class="ln" x1="310" y1="68" x2="350" y2="148" marker-end="url(#b4)"/>
+        <text class="lab" x="336" y="112">తాళాలు</text>
+        <rect class="n" x="10" y="152" width="160" height="82" rx="10" style="stroke-dasharray:5 4"/>
+        <text class="t1" x="90" y="178" text-anchor="middle">పూర్వ అధ్యక్షుడు</text>
+        <text class="t2" x="90" y="198" text-anchor="middle">అనుమతి తొలగింపు</text>
+        <rect class="n-a" x="270" y="152" width="160" height="82" rx="10"/>
+        <text class="t1" x="350" y="178" text-anchor="middle">కొత్త అధ్యక్షుడు</text>
+        <text class="t2" x="350" y="198" text-anchor="middle">అడ్మిన్ అనుమతి,</text>
+        <text class="t2" x="350" y="215" text-anchor="middle">రికవరీ ఇమెయిల్, ఫోన్</text>
+        <line class="ln" x1="170" y1="193" x2="268" y2="193" marker-end="url(#b4)"/>
+        <text class="lab" x="219" y="184" text-anchor="middle">ప్రతి 2 ఏళ్లకు</text>
+      </svg>
+    </div>
+    <figcaption>ఖాతా ఎప్పటికీ మారదు. దాని తాళాలు ఉన్న వ్యక్తి మాత్రమే ప్రతి రెండేళ్లకు మారతారు.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>బాధ్యతల మార్పు సమయంలో ఖాతా రికవరీ ఇమెయిల్, ఫోన్, సైన్-ఇన్ కోడ్‌లు కొత్త అధ్యక్షుడివిగా మారుస్తారు, పాత అధ్యక్షుడివి తొలగిస్తారు.</li>
+    <li>అధ్యక్షుడి ఫోన్ పోతే అవసరమయ్యే బ్యాకప్ కోడ్‌ల సీల్డ్ కాపీని మరో కమిటీ సభ్యుడు భద్రపరుస్తారు.</li>
+    <li>యాప్‌లో చేసే ప్రతి పని ఎవరు, ఏమి, ఎప్పుడు చేశారో మార్పుల లాగ్‌లో నమోదవుతుంది. దీన్ని అధ్యక్షుడు, కమిటీ మాత్రమే చదవగలరు.</li>
+  </ul>
+</section>
+
+<section id="te-who">
+  <h2>ఎవరు ఏం చేయగలరు</h2>
+  <p>కమిటీ అంటే అధ్యక్షుడు, ఉపాధ్యక్షుడు, ప్రధాన కార్యదర్శి, సంయుక్త కార్యదర్శి, కోశాధికారి. "నిర్ణయించాలి" అంటే కమిటీ ఎంచుకోవాలి.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>చర్య</th><th>సభ్యుడు</th><th>కోశాధికారి</th><th>అధ్యక్షుడు</th><th>ఉపాధ్యక్షుడు, ప్ర. కార్యదర్శి, సం. కార్యదర్శి</th></tr></thead>
+      <tbody>
+        <tr><td>ఖర్చులు, ఫిర్యాదులు, కార్యక్రమాలు, ఫోటోలు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>ఫిర్యాదు చేయడం, వ్యాఖ్య జోడించడం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>ఖర్చు నమోదు చేయడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td><td class="n0">కాదు</td></tr>
+        <tr><td>ఖర్చును ఆమోదించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>ఫిర్యాదు దశను మార్చడం (ప్రతిపాదన)</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>కార్యక్రమాలు సృష్టించడం, ఫోటోలు, వీడియోలు అప్‌లోడ్ చేయడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
+        <tr><td>వ్యాఖ్యను తొలగించడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
+        <tr><td>సభ్యులను చేర్చడం, తొలగించడం, పాత్రలు నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>మార్పుల లాగ్ చదవడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="te-privacy">
+  <h2>గోప్యత, భద్రత</h2>
+  <ul class="plain">
+    <li>అధ్యక్షుడి జాబితాలోని Gmail చిరునామాలు మాత్రమే యాప్ వాడగలవు.</li>
+    <li>నియమాలను స్క్రీన్‌పై మాత్రమే కాదు, యాప్ ప్రతిసారీ తనిఖీ చేస్తుంది.</li>
+    <li>చెల్లింపు స్క్రీన్‌షాట్‌లలో ఫోన్ నంబర్లు, UPI IDలు కనిపిస్తాయి, ప్రతి సభ్యుడూ వాటిని చూడగలరు. దీనికి కమిటీ అంగీకరించాలి.</li>
+    <li>ఫిర్యాదులు, వ్యాఖ్యలు సభ్యులందరికీ కనిపిస్తాయి.</li>
+    <li>కాలనీ మ్యాప్, ఎన్నికల ఓటింగ్ ఈ మొదటి వెర్షన్‌లో భాగం కావు.</li>
+  </ul>
+</section>
+
+<section id="te-decide">
+  <h2>కలిసి నిర్ణయించాల్సినవి</h2>
+  <ul class="plain">
+    <li>కార్యక్రమాలు సృష్టించి, ఫోటోలు, వీడియోలు అప్‌లోడ్ చేసేదెవరు.</li>
+    <li>వ్యాఖ్యను తొలగించగలిగేదెవరు.</li>
+    <li>వీడియో పరిమాణ పరిమితి.</li>
+    <li>చెల్లింపు స్క్రీన్‌షాట్‌లు అందరికీ కనిపించడానికి అందరూ అంగీకరిస్తారా.</li>
+    <li>సైన్-ఇన్ బ్యాకప్ కోడ్‌ల రెండో కాపీని ఎవరు ఉంచుకుంటారు.</li>
+  </ul>
+  <p class="note">కాలనీకి ఖర్చు: ఏమీ లేదు. వాడే వెబ్‌సైట్ హోస్టింగ్, Google Drive స్థలం ఉచితం.</p>
+</section>
+
+<footer>చర్చ కోసం ముసాయిదా. కమిటీ సమావేశం తర్వాత వివరాలు మారవచ్చు.</footer>
+</div>
+
+<script>
+(function () {
+  var en = document.getElementById('en'), te = document.getElementById('te');
+  var bEn = document.getElementById('btn-en'), bTe = document.getElementById('btn-te');
+  function show(lang, save) {
+    var isTe = lang === 'te';
+    en.hidden = isTe; te.hidden = !isTe;
+    bEn.setAttribute('aria-pressed', String(!isTe));
+    bTe.setAttribute('aria-pressed', String(isTe));
+    if (save) { try { localStorage.setItem('sre-lang', lang); } catch (e) {} }
+  }
+  var start = 'en', stored = null;
+  try { stored = localStorage.getItem('sre-lang'); } catch (e) {}
+  if (stored === 'te' || stored === 'en') start = stored;
+  else if ((navigator.language || '').slice(0, 2) === 'te') start = 'te';
+  var h = location.hash.replace('#', '');
+  if (h === 'te' || h === 'en') start = h;
+  show(start, false);
+  bEn.addEventListener('click', function () { show('en', true); });
+  bTe.addEventListener('click', function () { show('te', true); });
+})();
+</script>
