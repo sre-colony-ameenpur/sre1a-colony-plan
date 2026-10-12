@@ -127,6 +127,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <a href="#complaints">Complaints</a>
     <a href="#events">Events and media</a>
     <a href="#map">Colony map</a>
+    <a href="#meetings">Meetings</a>
     <a href="#backup">If the app stops</a>
     <a href="#handover">Handover</a>
     <a href="#who">Who can do what</a>
@@ -143,6 +144,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>Events</h3><p>Upcoming and past colony events, with their photos and videos.</p></div>
     <div class="part"><h3>Members list</h3><p>The president decides who has access and what each person can do. Only the president and committee see this list.</p></div>
     <div class="part"><h3>Colony map</h3><p>A zoomable map of the colony with every plot labelled. Search by plot number or member name, and tap a plot to see its details.</p></div>
+    <div class="part"><h3>General body meetings</h3><p>Dates, attendees, notes and action items from every meeting, with owners and due dates.</p></div>
   </div>
   <p class="muted">The app only records things. No money moves through it.</p>
 </section>
@@ -279,6 +281,43 @@ footer { color: var(--muted); font-size: 0.9rem; }
   <p class="note">The map today shows members' mobile numbers. Whether the app shows mobile numbers, and to whom, is for the committee to decide.</p>
 </section>
 
+<section id="meetings">
+  <h2>General body meetings</h2>
+  <p>Every general body meeting is recorded in the app: when it was, who came, what was discussed and what must be done afterwards. Members who missed it can read everything.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 312" role="img" aria-label="A meeting is announced with an agenda, held with attendance marked, its notes are published, and its action items are tracked until done and reviewed at the next meeting.">
+        <defs><marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="80" y="10" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="32" text-anchor="middle">Meeting announced</text>
+        <text class="t2" x="210" y="50" text-anchor="middle">date, place, agenda</text>
+        <line class="ln" x1="210" y1="62" x2="210" y2="88" marker-end="url(#c1)"/>
+        <rect class="n" x="80" y="90" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="112" text-anchor="middle">Meeting held</text>
+        <text class="t2" x="210" y="130" text-anchor="middle">attendees are marked</text>
+        <line class="ln" x1="210" y1="142" x2="210" y2="168" marker-end="url(#c1)"/>
+        <rect class="n" x="80" y="170" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="192" text-anchor="middle">Notes published</text>
+        <text class="t2" x="210" y="210" text-anchor="middle">visible to all members</text>
+        <line class="ln" x1="210" y1="222" x2="210" y2="248" marker-end="url(#c1)"/>
+        <rect class="n-a" x="80" y="250" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="272" text-anchor="middle">Action items tracked</text>
+        <text class="t2" x="210" y="290" text-anchor="middle">owner, due date, Open or Done</text>
+        <path class="ln-d" d="M340 276 H405 V36 H341" marker-end="url(#c1)"/>
+        <text class="lab" x="418" y="156" text-anchor="middle" transform="rotate(-90 418 156)">reviewed at the next meeting</text>
+      </svg>
+    </div>
+    <figcaption>Each meeting follows the same path. Open action items carry over and are reviewed at the next meeting.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>Each meeting has a date, place and agenda, announced before it is held.</li>
+    <li>Attendees are marked from the members list, so the record shows who was present.</li>
+    <li>Notes are saved after the meeting and are visible to all members. Agenda papers, photos of signed minutes and similar files are kept in the colony Drive.</li>
+    <li>Every action item has an owner, a due date and a status, Open or Done. Open items stay on the list and are reviewed at the next meeting. Overdue ones are marked.</li>
+  </ul>
+  <p class="note">Who writes the notes and marks attendance is for the committee to decide.</p>
+</section>
+
 <section id="backup">
   <h2>If the app stops working</h2>
   <p>The app is only a window on top of our Google Drive files. If it stops for any reason, nothing is lost. Every member already has view access to the same files in Google Drive and can read them directly using their own Gmail.</p>
@@ -334,6 +373,9 @@ footer { color: var(--muted); font-size: 0.9rem; }
         <tr><td>Remove a comment</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
                 <tr><td>See the colony map and plot owners' names</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
         <tr><td>See mobile numbers on the map</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
+                <tr><td>See meetings, notes, attendees, action items</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Create a meeting, write notes, mark attendance</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
+        <tr><td>Update an action item's status</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
         <tr><td>Add or remove members, set roles</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
         <tr><td>Read the change log</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
       </tbody>
@@ -348,6 +390,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>The rules are checked by the app every time, not just on the screen.</li>
     <li>Payment screenshots show phone numbers and UPI IDs, and every member can see them. The committee should be comfortable with that.</li>
     <li>Complaints and comments are visible to all members.</li>
+    <li>Who attended each meeting is visible to all members.</li>
     <li>Election voting is not part of this first version.</li>
   </ul>
 </section>
@@ -359,6 +402,9 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>Who can remove a comment.</li>
     <li>The video size limit.</li>
     <li>Whether mobile numbers appear on the map, and who can see them.</li>
+    <li>Who creates meetings, writes the notes and marks attendance.</li>
+    <li>Whether meeting notes need approval before members see them.</li>
+    <li>Who can update the status of an action item.</li>
     <li>Whether every member is happy for payment screenshots to be visible to all.</li>
     <li>Who keeps the second copy of the sign-in backup codes.</li>
   </ul>
@@ -382,6 +428,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <a href="#te-complaints">ఫిర్యాదులు</a>
     <a href="#te-events">కార్యక్రమాలు, మీడియా</a>
     <a href="#te-map">కాలనీ మ్యాప్</a>
+    <a href="#te-meetings">సమావేశాలు</a>
     <a href="#te-backup">యాప్ ఆగిపోతే</a>
     <a href="#te-handover">బాధ్యతల మార్పు</a>
     <a href="#te-who">ఎవరు ఏం చేయగలరు</a>
@@ -398,6 +445,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>కార్యక్రమాలు</h3><p>రాబోయే, జరిగిన కాలనీ కార్యక్రమాలు, వాటి ఫోటోలు, వీడియోలు.</p></div>
     <div class="part"><h3>సభ్యుల జాబితా</h3><p>ఎవరు యాప్ వాడవచ్చు, ఎవరు ఏం చేయవచ్చు అనేది అధ్యక్షుడు నిర్ణయిస్తారు. ఈ జాబితాను అధ్యక్షుడు, కమిటీ మాత్రమే చూడగలరు.</p></div>
     <div class="part"><h3>కాలనీ మ్యాప్</h3><p>ప్రతి ప్లాట్ పేరుతో కాలనీ మ్యాప్, జూమ్ చేయవచ్చు. ప్లాట్ నంబర్ లేదా సభ్యుని పేరుతో వెతకవచ్చు, ప్లాట్ నొక్కితే వివరాలు కనిపిస్తాయి.</p></div>
+    <div class="part"><h3>సర్వసభ్య సమావేశాలు</h3><p>ప్రతి సమావేశం తేదీ, హాజరైనవారు, నోట్స్, చేయవలసిన పనులు, బాధ్యులు, గడువు తేదీలతో.</p></div>
   </div>
   <p class="muted">ఈ యాప్ కేవలం రికార్డు చేస్తుంది. దీని ద్వారా డబ్బు బదిలీ జరగదు.</p>
 </section>
@@ -534,6 +582,43 @@ footer { color: var(--muted); font-size: 0.9rem; }
   <p class="note">ఈ రోజు మ్యాప్‌లో సభ్యుల మొబైల్ నంబర్లు కనిపిస్తున్నాయి. యాప్‌లో మొబైల్ నంబర్లు చూపాలా, ఎవరికి చూపాలా అనేది కమిటీ నిర్ణయించాలి.</p>
 </section>
 
+<section id="te-meetings">
+  <h2>సర్వసభ్య సమావేశాలు</h2>
+  <p>ప్రతి సర్వసభ్య సమావేశం యాప్‌లో నమోదవుతుంది: ఎప్పుడు జరిగింది, ఎవరు వచ్చారు, ఏం చర్చించారు, తర్వాత ఏం చేయాలి. సమావేశానికి రాలేకపోయిన సభ్యులు అన్నీ చదవవచ్చు.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 312" role="img" aria-label="సమావేశం అజెండాతో ప్రకటించబడుతుంది, హాజరు నమోదుతో జరుగుతుంది, నోట్స్ ప్రచురించబడతాయి, చేయవలసిన పనులు పూర్తయ్యే వరకు పర్యవేక్షించబడి తదుపరి సమావేశంలో సమీక్షించబడతాయి.">
+        <defs><marker id="d1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="80" y="10" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="32" text-anchor="middle">సమావేశం ప్రకటన</text>
+        <text class="t2" x="210" y="50" text-anchor="middle">తేదీ, స్థలం, అజెండా</text>
+        <line class="ln" x1="210" y1="62" x2="210" y2="88" marker-end="url(#d1)"/>
+        <rect class="n" x="80" y="90" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="112" text-anchor="middle">సమావేశం జరిగింది</text>
+        <text class="t2" x="210" y="130" text-anchor="middle">హాజరైనవారి నమోదు</text>
+        <line class="ln" x1="210" y1="142" x2="210" y2="168" marker-end="url(#d1)"/>
+        <rect class="n" x="80" y="170" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="192" text-anchor="middle">నోట్స్ ప్రచురణ</text>
+        <text class="t2" x="210" y="210" text-anchor="middle">సభ్యులందరికీ కనిపిస్తాయి</text>
+        <line class="ln" x1="210" y1="222" x2="210" y2="248" marker-end="url(#d1)"/>
+        <rect class="n-a" x="80" y="250" width="260" height="52" rx="10"/>
+        <text class="t1" x="210" y="272" text-anchor="middle">చేయవలసిన పనుల పర్యవేక్షణ</text>
+        <text class="t2" x="210" y="290" text-anchor="middle">బాధ్యులు, గడువు తేదీ, స్థితి</text>
+        <path class="ln-d" d="M340 276 H405 V36 H341" marker-end="url(#d1)"/>
+        <text class="lab" x="418" y="156" text-anchor="middle" transform="rotate(-90 418 156)">తదుపరి సమావేశంలో సమీక్ష</text>
+      </svg>
+    </div>
+    <figcaption>ప్రతి సమావేశం ఇదే దారిలో సాగుతుంది. పూర్తికాని పనులు తదుపరి సమావేశానికి వెళ్లి సమీక్షించబడతాయి.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>ప్రతి సమావేశానికి తేదీ, స్థలం, అజెండా ఉంటాయి. సమావేశానికి ముందే ప్రకటిస్తారు.</li>
+    <li>హాజరైనవారిని సభ్యుల జాబితా నుండి ఎంచుకుని నమోదు చేస్తారు, కాబట్టి ఎవరు వచ్చారో రికార్డులో ఉంటుంది.</li>
+    <li>సమావేశం తర్వాత నోట్స్ భద్రపరుస్తారు, సభ్యులందరికీ కనిపిస్తాయి. అజెండా పత్రాలు, సంతకం చేసిన మినిట్స్ ఫోటోలు వంటి ఫైళ్లు కాలనీ Drive లో ఉంటాయి.</li>
+    <li>ప్రతి చేయవలసిన పనికి బాధ్యులు, గడువు తేదీ, స్థితి (తెరిచి ఉంది లేదా పూర్తయింది) ఉంటాయి. పూర్తికాని పనులు జాబితాలోనే ఉండి తదుపరి సమావేశంలో సమీక్షించబడతాయి. గడువు దాటినవాటికి గుర్తు ఉంటుంది.</li>
+  </ul>
+  <p class="note">నోట్స్ ఎవరు రాస్తారు, హాజరు ఎవరు నమోదు చేస్తారు అనేది కమిటీ నిర్ణయించాలి.</p>
+</section>
+
 <section id="te-backup">
   <h2>యాప్ పనిచేయకపోతే</h2>
   <p>యాప్ మన Google Drive ఫైళ్లపై ఒక కిటికీ మాత్రమే. ఏ కారణంతోనైనా ఆగిపోయినా, ఏదీ పోదు. ప్రతి సభ్యునికీ అవే ఫైళ్లను Google Drive లో చూసే అనుమతి ఇప్పటికే ఉంటుంది. తమ Gmail తో నేరుగా చదవవచ్చు.</p>
@@ -589,6 +674,9 @@ footer { color: var(--muted); font-size: 0.9rem; }
         <tr><td>వ్యాఖ్యను తొలగించడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
                 <tr><td>కాలనీ మ్యాప్, ప్లాట్ యజమానుల పేర్లు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
         <tr><td>మ్యాప్‌లో మొబైల్ నంబర్లు చూడటం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
+                <tr><td>సమావేశాలు, నోట్స్, హాజరైనవారు, చేయవలసిన పనులు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>సమావేశం సృష్టించడం, నోట్స్ రాయడం, హాజరు నమోదు</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
+        <tr><td>చేయవలసిన పని స్థితిని మార్చడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
         <tr><td>సభ్యులను చేర్చడం, తొలగించడం, పాత్రలు నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
         <tr><td>మార్పుల లాగ్ చదవడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
       </tbody>
@@ -603,6 +691,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>నియమాలను స్క్రీన్‌పై మాత్రమే కాదు, యాప్ ప్రతిసారీ తనిఖీ చేస్తుంది.</li>
     <li>చెల్లింపు స్క్రీన్‌షాట్‌లలో ఫోన్ నంబర్లు, UPI IDలు కనిపిస్తాయి, ప్రతి సభ్యుడూ వాటిని చూడగలరు. దీనికి కమిటీ అంగీకరించాలి.</li>
     <li>ఫిర్యాదులు, వ్యాఖ్యలు సభ్యులందరికీ కనిపిస్తాయి.</li>
+    <li>ప్రతి సమావేశానికి ఎవరు హాజరయ్యారో సభ్యులందరికీ కనిపిస్తుంది.</li>
     <li>ఎన్నికల ఓటింగ్ ఈ మొదటి వెర్షన్‌లో భాగం కాదు.</li>
   </ul>
 </section>
@@ -614,6 +703,9 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>వ్యాఖ్యను తొలగించగలిగేదెవరు.</li>
     <li>వీడియో పరిమాణ పరిమితి.</li>
     <li>మ్యాప్‌లో మొబైల్ నంబర్లు కనిపించాలా, ఎవరికి కనిపించాలి.</li>
+    <li>సమావేశాలు సృష్టించి, నోట్స్ రాసి, హాజరు నమోదు చేసేదెవరు.</li>
+    <li>సభ్యులకు కనిపించే ముందు సమావేశ నోట్స్‌కు ఆమోదం కావాలా.</li>
+    <li>చేయవలసిన పని స్థితిని మార్చగలిగేదెవరు.</li>
     <li>చెల్లింపు స్క్రీన్‌షాట్‌లు అందరికీ కనిపించడానికి అందరూ అంగీకరిస్తారా.</li>
     <li>సైన్-ఇన్ బ్యాకప్ కోడ్‌ల రెండో కాపీని ఎవరు ఉంచుకుంటారు.</li>
   </ul>
