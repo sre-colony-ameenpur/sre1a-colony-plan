@@ -50,7 +50,7 @@ section { display: flex; flex-direction: column; gap: 16px; }
 .muted { color: var(--muted); }
 header { display: flex; flex-direction: column; gap: 14px; }
 nav { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 0.95rem; }
-nav a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+nav a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; padding-block: 6px; }
 a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 
 .parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
@@ -59,12 +59,13 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-
 
 figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
 .dia-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; overflow-x: auto; }
+@media (max-width: 480px) { .dia-box { padding: 8px 4px; } }
 svg.dia { display: block; width: 100%; max-width: 460px; height: auto; margin-inline: auto; color: var(--fg); }
 figcaption { font-size: 0.95rem; color: var(--muted); max-width: 65ch; }
 svg text { fill: var(--fg); font-family: var(--body); }
-svg .t1 { font-size: 14px; font-weight: 700; }
-svg .t2 { font-size: 12px; fill: var(--muted); }
-svg .lab { font-size: 12px; fill: var(--muted); }
+svg .t1 { font-size: 17px; font-weight: 700; }
+svg .t2 { font-size: 15px; fill: var(--muted); }
+svg .lab { font-size: 14px; fill: var(--muted); }
 svg .n { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
 svg .n-a { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
 svg .n-w { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1.5; }
@@ -98,7 +99,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
 .wrap { font-family: var(--body); }
 .langbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; max-width: 720px; margin: 0 auto 20px; padding-block: 8px; background: var(--bg); display: flex; justify-content: flex-end; }
 .seg { display: inline-flex; border: 1.5px solid var(--accent); border-radius: 999px; overflow: hidden; }
-.seg button { font: inherit; font-size: 0.95rem; font-weight: 600; padding: 7px 18px; border: 0; background: transparent; color: var(--accent); cursor: pointer; }
+.seg button { font: inherit; font-size: 0.95rem; font-weight: 600; min-height: 40px; padding: 7px 18px; border: 0; background: transparent; color: var(--accent); cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
 .seg button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 [lang="te"] { --display: "Noto Sans Telugu", "Nirmala UI", "Gautami", system-ui, sans-serif; --body: "Noto Sans Telugu", "Nirmala UI", "Gautami", system-ui, sans-serif; line-height: 1.8; font-size: 16px; }
@@ -394,7 +395,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
         <rect class="n-a" x="270" y="152" width="160" height="82" rx="10"/>
         <text class="t1" x="350" y="178" text-anchor="middle">New president</text>
         <text class="t2" x="350" y="198" text-anchor="middle">admin access and</text>
-        <text class="t2" x="350" y="215" text-anchor="middle">recovery email and phone</text>
+        <text class="t2" x="350" y="215" text-anchor="middle">recovery email, phone</text>
         <line class="ln" x1="170" y1="193" x2="268" y2="193" marker-end="url(#a4)"/>
         <text class="lab" x="219" y="184" text-anchor="middle">every 2 years</text>
       </svg>
