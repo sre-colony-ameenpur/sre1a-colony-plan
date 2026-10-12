@@ -128,6 +128,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <a href="#events">Events and media</a>
     <a href="#map">Colony map</a>
     <a href="#meetings">Meetings</a>
+    <a href="#maintenance">Maintenance</a>
+    <a href="#polls">Polls</a>
     <a href="#backup">If the app stops</a>
     <a href="#handover">Handover</a>
     <a href="#who">Who can do what</a>
@@ -137,7 +139,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="what">
   <h2>What it does</h2>
-  <p>Everything is open to every member to read, so nothing is hidden and everyone can see how colony money and issues are handled. Only a few people can add or change things.</p>
+  <p>Almost everything is open to every member to read, so nothing is hidden and everyone can see how colony money and issues are handled. A plot's own maintenance dues are shown only to its members and the committee (proposed). Only a few people can add or change things.</p>
   <div class="parts">
     <div class="part"><h3>Expenses</h3><p>Every colony expense with its amount, reason and PhonePe payment screenshot. The treasurer enters it and the president approves it.</p></div>
     <div class="part"><h3>Complaints</h3><p>Any member can raise a complaint with photos or videos. Everyone can reply. The time taken to fix it is recorded.</p></div>
@@ -145,6 +147,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>Members list</h3><p>The president decides who has access and what each person can do. Only the president and committee see this list.</p></div>
     <div class="part"><h3>Colony map</h3><p>A zoomable map of the colony with every plot labelled. Search by plot number or member name, and tap a plot to see its details.</p></div>
     <div class="part"><h3>General body meetings</h3><p>Dates, attendees, notes and action items from every meeting, with owners and due dates.</p></div>
+    <div class="part"><h3>Monthly maintenance</h3><p>The monthly fee for each plot, set by the president, with payments and dues.</p></div>
+    <div class="part"><h3>Polls</h3><p>Quick colony-wide polls on decisions, with one vote per plot.</p></div>
   </div>
   <p class="muted">The app only records things. No money moves through it.</p>
 </section>
@@ -318,6 +322,53 @@ footer { color: var(--muted); font-size: 0.9rem; }
   <p class="note">Who writes the notes and marks attendance is for the committee to decide.</p>
 </section>
 
+<section id="maintenance">
+  <h2>Monthly maintenance</h2>
+  <p>The president sets the monthly maintenance fee, with one rate for plots that have an independent house and another for open plots. Each plot owes the fee for its category every month.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 312" role="img" aria-label="The president sets the fees, each plot owes its monthly fee, the treasurer records a payment, and the president confirms it so the plot balance falls.">
+        <defs><marker id="e1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="60" y="10" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="32" text-anchor="middle">President sets the fee</text>
+        <text class="t2" x="220" y="50" text-anchor="middle">separate rates for houses and open plots</text>
+        <line class="ln" x1="220" y1="62" x2="220" y2="88" marker-end="url(#e1)"/>
+        <rect class="n" x="60" y="90" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="112" text-anchor="middle">Each plot owes the monthly fee</text>
+        <text class="t2" x="220" y="130" text-anchor="middle">from the month the fee starts</text>
+        <line class="ln" x1="220" y1="142" x2="220" y2="168" marker-end="url(#e1)"/>
+        <rect class="n" x="60" y="170" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="192" text-anchor="middle">Treasurer records a payment</text>
+        <text class="t2" x="220" y="210" text-anchor="middle">plot, months, amount, proof</text>
+        <line class="ln" x1="220" y1="222" x2="220" y2="248" marker-end="url(#e1)"/>
+        <rect class="n-a" x="60" y="250" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="272" text-anchor="middle">President confirms it</text>
+        <text class="t2" x="220" y="290" text-anchor="middle">the plot balance goes down</text>
+      </svg>
+    </div>
+    <figcaption>The path of maintenance money for one plot. A payment counts only after it is confirmed.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>A fee change applies from the month the president chooses. Earlier months keep the old fee.</li>
+    <li>The treasurer records a payment against a plot and the months it covers, with proof. The president confirms it before it counts (proposed). A mistake is fixed with a correcting entry.</li>
+    <li>Each member sees their own plot's dues, payments and balance. The committee sees which plots have paid. Everyone sees the colony totals collected and outstanding (proposed).</li>
+    <li>Late fees, reminders and online payment are not part of the first version.</li>
+  </ul>
+  <p class="note">Before the first month, each plot's category (independent house or open plot) has to be confirmed by the president.</p>
+</section>
+
+<section id="polls">
+  <h2>Polls for colony decisions</h2>
+  <p>For decisions such as a repair, a vendor or a date, the committee can ask the whole colony in a poll. It opens and closes at set times.</p>
+  <ul class="plain">
+    <li>Each plot has one vote, cast by any member of that plot (proposed).</li>
+    <li>While a poll is open, nobody sees the running count. When it closes, everyone sees the result and how many plots took part.</li>
+    <li>A poll can be open, where the committee can see which plot chose what, or secret, where nobody can see who chose what.</li>
+    <li>A vote cannot be changed after it is cast. A poll that has votes cannot be edited, only cancelled with a reason.</li>
+    <li>A poll shows what the colony thinks. It does not replace the president election or the colony rules.</li>
+  </ul>
+</section>
+
 <section id="backup">
   <h2>If the app stops working</h2>
   <p>The app is only a window on top of our Google Drive files. If it stops for any reason, nothing is lost. Every member already has view access to the same files in Google Drive and can read them directly using their own Gmail.</p>
@@ -376,6 +427,13 @@ footer { color: var(--muted); font-size: 0.9rem; }
                 <tr><td>See meetings, notes, attendees, action items</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
         <tr><td>Create a meeting, write notes, mark attendance</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
         <tr><td>Update an action item's status</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
+                <tr><td>See own plot's maintenance dues and balance</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Set the maintenance fee</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Record a maintenance payment</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td><td class="n0">No</td></tr>
+        <tr><td>Confirm a maintenance payment (proposed)</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>See every plot's paid or unpaid status</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Vote in a poll (one per plot)</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Create or cancel a poll (proposed)</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
         <tr><td>Add or remove members, set roles</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
         <tr><td>Read the change log</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
       </tbody>
@@ -391,6 +449,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>Payment screenshots show phone numbers and UPI IDs, and every member can see them. The committee should be comfortable with that.</li>
     <li>Complaints and comments are visible to all members.</li>
     <li>Who attended each meeting is visible to all members.</li>
+    <li>Each plot's maintenance dues are visible only to that plot's members and the committee (proposed).</li>
+    <li>In a secret poll, nobody can see who chose what.</li>
     <li>Election voting is not part of this first version.</li>
   </ul>
 </section>
@@ -405,6 +465,9 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>Who creates meetings, writes the notes and marks attendance.</li>
     <li>Whether meeting notes need approval before members see them.</li>
     <li>Who can update the status of an action item.</li>
+    <li>Who sees each plot's maintenance dues, and who confirms maintenance payments.</li>
+    <li>Which plots count as independent houses and which as open plots.</li>
+    <li>Who can create polls, and whether secret polls are allowed.</li>
     <li>Whether every member is happy for payment screenshots to be visible to all.</li>
     <li>Who keeps the second copy of the sign-in backup codes.</li>
   </ul>
@@ -429,6 +492,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <a href="#te-events">కార్యక్రమాలు, మీడియా</a>
     <a href="#te-map">కాలనీ మ్యాప్</a>
     <a href="#te-meetings">సమావేశాలు</a>
+    <a href="#te-maintenance">నిర్వహణ రుసుము</a>
+    <a href="#te-polls">పోల్స్</a>
     <a href="#te-backup">యాప్ ఆగిపోతే</a>
     <a href="#te-handover">బాధ్యతల మార్పు</a>
     <a href="#te-who">ఎవరు ఏం చేయగలరు</a>
@@ -438,7 +503,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="te-what">
   <h2>ఇది ఏం చేస్తుంది</h2>
-  <p>ప్రతిదీ సభ్యులందరూ చూడవచ్చు. కాబట్టి ఏదీ దాచబడదు. కాలనీ డబ్బు, సమస్యలు ఎలా నిర్వహించబడుతున్నాయో అందరూ చూడగలరు. కొత్తగా చేర్చడం, మార్చడం కొద్దిమంది మాత్రమే చేయగలరు.</p>
+  <p>దాదాపు ప్రతిదీ సభ్యులందరూ చూడవచ్చు. కాబట్టి ఏదీ దాచబడదు. కాలనీ డబ్బు, సమస్యలు ఎలా నిర్వహించబడుతున్నాయో అందరూ చూడగలరు. ప్రతి ప్లాట్ నిర్వహణ రుసుము వివరాలు ఆ ప్లాట్ సభ్యులకు, కమిటీకి మాత్రమే కనిపిస్తాయి (ప్రతిపాదన). కొత్తగా చేర్చడం, మార్చడం కొద్దిమంది మాత్రమే చేయగలరు.</p>
   <div class="parts">
     <div class="part"><h3>ఖర్చులు</h3><p>కాలనీ ప్రతి ఖర్చు, దాని మొత్తం, కారణం, PhonePe చెల్లింపు స్క్రీన్‌షాట్‌తో సహా. కోశాధికారి నమోదు చేస్తారు, అధ్యక్షుడు ఆమోదిస్తారు.</p></div>
     <div class="part"><h3>ఫిర్యాదులు</h3><p>ఏ సభ్యుడైనా ఫోటోలు లేదా వీడియోలతో ఫిర్యాదు చేయవచ్చు. అందరూ స్పందించవచ్చు. పరిష్కారానికి పట్టిన సమయం నమోదవుతుంది.</p></div>
@@ -446,6 +511,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>సభ్యుల జాబితా</h3><p>ఎవరు యాప్ వాడవచ్చు, ఎవరు ఏం చేయవచ్చు అనేది అధ్యక్షుడు నిర్ణయిస్తారు. ఈ జాబితాను అధ్యక్షుడు, కమిటీ మాత్రమే చూడగలరు.</p></div>
     <div class="part"><h3>కాలనీ మ్యాప్</h3><p>ప్రతి ప్లాట్ పేరుతో కాలనీ మ్యాప్, జూమ్ చేయవచ్చు. ప్లాట్ నంబర్ లేదా సభ్యుని పేరుతో వెతకవచ్చు, ప్లాట్ నొక్కితే వివరాలు కనిపిస్తాయి.</p></div>
     <div class="part"><h3>సర్వసభ్య సమావేశాలు</h3><p>ప్రతి సమావేశం తేదీ, హాజరైనవారు, నోట్స్, చేయవలసిన పనులు, బాధ్యులు, గడువు తేదీలతో.</p></div>
+    <div class="part"><h3>నెలవారీ నిర్వహణ రుసుము</h3><p>ప్రతి ప్లాట్‌కు నెలవారీ రుసుము అధ్యక్షుడు నిర్ణయిస్తారు, చెల్లింపులు, బాకీలతో.</p></div>
+    <div class="part"><h3>పోల్స్</h3><p>నిర్ణయాలపై కాలనీ అంతటా పోల్, ప్లాట్‌కు ఒక ఓటు.</p></div>
   </div>
   <p class="muted">ఈ యాప్ కేవలం రికార్డు చేస్తుంది. దీని ద్వారా డబ్బు బదిలీ జరగదు.</p>
 </section>
@@ -619,6 +686,53 @@ footer { color: var(--muted); font-size: 0.9rem; }
   <p class="note">నోట్స్ ఎవరు రాస్తారు, హాజరు ఎవరు నమోదు చేస్తారు అనేది కమిటీ నిర్ణయించాలి.</p>
 </section>
 
+<section id="te-maintenance">
+  <h2>నెలవారీ నిర్వహణ రుసుము</h2>
+  <p>అధ్యక్షుడు నెలవారీ నిర్వహణ రుసుమును నిర్ణయిస్తారు: ఇల్లు ఉన్న ప్లాట్లకు ఒక రేటు, ఖాళీ ప్లాట్లకు మరొక రేటు. ప్రతి ప్లాట్ ప్రతి నెలా తన వర్గానికి సంబంధించిన రుసుము చెల్లించాలి.</p>
+  <figure>
+    <div class="dia-box">
+      <svg class="dia" viewBox="0 0 440 312" role="img" aria-label="అధ్యక్షుడు రుసుము నిర్ణయిస్తారు, ప్రతి ప్లాట్ నెలవారీ రుసుము చెల్లించాలి, కోశాధికారి చెల్లింపు నమోదు చేస్తారు, అధ్యక్షుడు నిర్ధారిస్తారు, అప్పుడు ప్లాట్ బాకీ తగ్గుతుంది.">
+        <defs><marker id="f1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+        <rect class="n" x="60" y="10" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="32" text-anchor="middle">అధ్యక్షుడు రుసుము నిర్ణయిస్తారు</text>
+        <text class="t2" x="220" y="50" text-anchor="middle">ఇల్లు, ఖాళీ ప్లాట్లకు వేర్వేరు రుసుము</text>
+        <line class="ln" x1="220" y1="62" x2="220" y2="88" marker-end="url(#f1)"/>
+        <rect class="n" x="60" y="90" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="112" text-anchor="middle">ప్రతి ప్లాట్‌కు నెలవారీ బాకీ</text>
+        <text class="t2" x="220" y="130" text-anchor="middle">రుసుము మొదలయ్యే నెల నుండి</text>
+        <line class="ln" x1="220" y1="142" x2="220" y2="168" marker-end="url(#f1)"/>
+        <rect class="n" x="60" y="170" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="192" text-anchor="middle">కోశాధికారి చెల్లింపు నమోదు</text>
+        <text class="t2" x="220" y="210" text-anchor="middle">ప్లాట్, నెలలు, మొత్తం, రుజువు</text>
+        <line class="ln" x1="220" y1="222" x2="220" y2="248" marker-end="url(#f1)"/>
+        <rect class="n-a" x="60" y="250" width="320" height="52" rx="10"/>
+        <text class="t1" x="220" y="272" text-anchor="middle">అధ్యక్షుడు నిర్ధారిస్తారు</text>
+        <text class="t2" x="220" y="290" text-anchor="middle">ప్లాట్ బాకీ తగ్గుతుంది</text>
+      </svg>
+    </div>
+    <figcaption>ఒక ప్లాట్ నిర్వహణ డబ్బు సాగే దారి. నిర్ధారణ తర్వాతే చెల్లింపు లెక్కలోకి వస్తుంది.</figcaption>
+  </figure>
+  <ul class="plain">
+    <li>రుసుము మార్పు అధ్యక్షుడు ఎంచుకున్న నెల నుండి వర్తిస్తుంది. ముందటి నెలలకు పాత రుసుమే ఉంటుంది.</li>
+    <li>కోశాధికారి ఒక ప్లాట్‌కు, అది కవర్ చేసే నెలలకు, రుజువుతో చెల్లింపు నమోదు చేస్తారు. అధ్యక్షుడు నిర్ధారించిన తర్వాతే అది లెక్కలోకి వస్తుంది (ప్రతిపాదన). పొరపాటు ఉంటే సవరణ నమోదుతో సరిచేస్తారు.</li>
+    <li>ప్రతి సభ్యుడు తన ప్లాట్ రుసుములు, చెల్లింపులు, బాకీని చూడగలరు. ఏ ప్లాట్లు చెల్లించాయో కమిటీ చూడగలదు. వసూలైన, ఇంకా రావాల్సిన మొత్తం కాలనీ మొత్తాలు అందరికీ కనిపిస్తాయి (ప్రతిపాదన).</li>
+    <li>ఆలస్య రుసుములు, గుర్తుచేతలు, ఆన్‌లైన్ చెల్లింపు మొదటి వెర్షన్‌లో లేవు.</li>
+  </ul>
+  <p class="note">మొదటి నెలకు ముందు ప్రతి ప్లాట్ వర్గం (ఇల్లు ఉన్న ప్లాట్ లేదా ఖాళీ ప్లాట్) అధ్యక్షుడు నిర్ధారించాలి.</p>
+</section>
+
+<section id="te-polls">
+  <h2>నిర్ణయాల కోసం పోల్స్</h2>
+  <p>ఒక మరమ్మతు, ఒక విక్రేత లేదా ఒక తేదీ వంటి నిర్ణయాల కోసం కమిటీ మొత్తం కాలనీని పోల్ ద్వారా అడగవచ్చు. పోల్ నిర్ణీత సమయాల్లో తెరుచుకుని ముగుస్తుంది.</p>
+  <ul class="plain">
+    <li>ప్రతి ప్లాట్‌కు ఒక ఓటు. ఆ ప్లాట్ సభ్యుల్లో ఎవరైనా వేయవచ్చు (ప్రతిపాదన).</li>
+    <li>పోల్ తెరిచి ఉన్నప్పుడు ఎవరికీ లెక్కలు కనిపించవు. ముగిసిన తర్వాత ఫలితం, ఎన్ని ప్లాట్లు పాల్గొన్నాయో అందరికీ కనిపిస్తాయి.</li>
+    <li>పోల్ బహిరంగం కావచ్చు, అప్పుడు ఏ ప్లాట్ ఏది ఎంచుకుందో కమిటీ చూడగలదు. లేదా రహస్యం కావచ్చు, అప్పుడు ఎవరు ఏది ఎంచుకున్నారో ఎవరికీ తెలియదు.</li>
+    <li>వేసిన ఓటును మార్చలేరు. ఓట్లు పడిన పోల్‌ను మార్చకూడదు, కారణంతో రద్దు మాత్రమే చేయవచ్చు.</li>
+    <li>పోల్ కాలనీ అభిప్రాయాన్ని చూపుతుంది. ఇది అధ్యక్ష ఎన్నికకు, కాలనీ నియమాలకు ప్రత్యామ్నాయం కాదు.</li>
+  </ul>
+</section>
+
 <section id="te-backup">
   <h2>యాప్ పనిచేయకపోతే</h2>
   <p>యాప్ మన Google Drive ఫైళ్లపై ఒక కిటికీ మాత్రమే. ఏ కారణంతోనైనా ఆగిపోయినా, ఏదీ పోదు. ప్రతి సభ్యునికీ అవే ఫైళ్లను Google Drive లో చూసే అనుమతి ఇప్పటికే ఉంటుంది. తమ Gmail తో నేరుగా చదవవచ్చు.</p>
@@ -677,6 +791,13 @@ footer { color: var(--muted); font-size: 0.9rem; }
                 <tr><td>సమావేశాలు, నోట్స్, హాజరైనవారు, చేయవలసిన పనులు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
         <tr><td>సమావేశం సృష్టించడం, నోట్స్ రాయడం, హాజరు నమోదు</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
         <tr><td>చేయవలసిన పని స్థితిని మార్చడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
+                <tr><td>తమ ప్లాట్ నిర్వహణ రుసుము, బాకీ చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>నిర్వహణ రుసుము నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>నిర్వహణ చెల్లింపు నమోదు చేయడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td><td class="n0">కాదు</td></tr>
+        <tr><td>నిర్వహణ చెల్లింపును నిర్ధారించడం (ప్రతిపాదన)</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>ప్రతి ప్లాట్ చెల్లింపు స్థితి చూడటం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>పోల్‌లో ఓటు వేయడం (ప్లాట్‌కు ఒకటి)</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>పోల్ సృష్టించడం, రద్దు చేయడం (ప్రతిపాదన)</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
         <tr><td>సభ్యులను చేర్చడం, తొలగించడం, పాత్రలు నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
         <tr><td>మార్పుల లాగ్ చదవడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
       </tbody>
@@ -692,6 +813,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>చెల్లింపు స్క్రీన్‌షాట్‌లలో ఫోన్ నంబర్లు, UPI IDలు కనిపిస్తాయి, ప్రతి సభ్యుడూ వాటిని చూడగలరు. దీనికి కమిటీ అంగీకరించాలి.</li>
     <li>ఫిర్యాదులు, వ్యాఖ్యలు సభ్యులందరికీ కనిపిస్తాయి.</li>
     <li>ప్రతి సమావేశానికి ఎవరు హాజరయ్యారో సభ్యులందరికీ కనిపిస్తుంది.</li>
+    <li>ప్రతి ప్లాట్ నిర్వహణ రుసుము వివరాలు ఆ ప్లాట్ సభ్యులకు, కమిటీకి మాత్రమే కనిపిస్తాయి (ప్రతిపాదన).</li>
+    <li>రహస్య పోల్‌లో ఎవరు ఏది ఎంచుకున్నారో ఎవరికీ తెలియదు.</li>
     <li>ఎన్నికల ఓటింగ్ ఈ మొదటి వెర్షన్‌లో భాగం కాదు.</li>
   </ul>
 </section>
@@ -706,6 +829,9 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>సమావేశాలు సృష్టించి, నోట్స్ రాసి, హాజరు నమోదు చేసేదెవరు.</li>
     <li>సభ్యులకు కనిపించే ముందు సమావేశ నోట్స్‌కు ఆమోదం కావాలా.</li>
     <li>చేయవలసిన పని స్థితిని మార్చగలిగేదెవరు.</li>
+    <li>ప్రతి ప్లాట్ నిర్వహణ రుసుము వివరాలు ఎవరికి కనిపించాలి, చెల్లింపులను ఎవరు నిర్ధారిస్తారు.</li>
+    <li>ఏ ప్లాట్లు ఇల్లు ఉన్నవి, ఏవి ఖాళీ ప్లాట్లు.</li>
+    <li>పోల్స్ ఎవరు సృష్టించగలరు, రహస్య పోల్స్ అనుమతించాలా.</li>
     <li>చెల్లింపు స్క్రీన్‌షాట్‌లు అందరికీ కనిపించడానికి అందరూ అంగీకరిస్తారా.</li>
     <li>సైన్-ఇన్ బ్యాకప్ కోడ్‌ల రెండో కాపీని ఎవరు ఉంచుకుంటారు.</li>
   </ul>
