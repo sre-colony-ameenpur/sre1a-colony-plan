@@ -267,10 +267,12 @@ footer { color: var(--muted); font-size: 0.9rem; }
 <section id="events">
   <h2>Events, photos and videos</h2>
   <ul class="plain">
-    <li>Events are listed with date, details and their photos and videos.</li>
+    <li>Events are listed with date, place, details and their photos and videos.</li>
     <li>Photos are shrunk automatically when you upload them, so nobody has to resize anything and our free storage lasts for years.</li>
-    <li>Videos open in Google Drive's own player. You must be signed in to Drive with the Gmail the president added.</li>
-    <li>Our free storage is 15 GB. Video files will have a size limit, about 100 MB, to be confirmed.</li>
+    <li>To add a video, an allowed person picks it in the app. The app sends it to the colony's own YouTube channel as an unlisted video. The person adding it does not need a YouTube account, and the video never takes space in our Drive.</li>
+    <li>Members watch videos inside the app, in a simple player with no web address and no share button. A video that is not a video file, or is larger than the limit (about 100 MB, a setting the committee can change), is refused with a clear message. If the connection breaks, the upload carries on from where it stopped.</li>
+    <li>Be aware: "unlisted" is a deterrent, not a lock. Someone who is given the video's id could watch it, so do not put anything private in a video.</li>
+    <li>Photos work from the first release. Video upload is switched on once it has been tested with the colony's real YouTube channel.</li>
   </ul>
 </section>
 
@@ -283,7 +285,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>Plots link to the rest of the app, for example to see the complaints raised for a plot (proposed).</li>
     <li>The map is still being completed. Some plots, such as A-61 to A-68, need to be placed, and a few members' plots are not located yet.</li>
   </ul>
-  <p class="note">The map today shows members' mobile numbers. Whether the app shows mobile numbers, and to whom, is for the committee to decide.</p>
+  <p class="note">In the app, a member's mobile number is shown to the committee, and to every member only for the committee office-holders or for members who choose to share theirs.</p>
 </section>
 
 <section id="meetings">
@@ -320,7 +322,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>Notes are saved after the meeting and are visible to all members. Agenda papers, photos of signed minutes and similar files are kept in the colony Drive.</li>
     <li>Every action item has an owner, a due date and a status, Open or Done. Open items stay on the list and are reviewed at the next meeting. Overdue ones are marked.</li>
   </ul>
-  <p class="note">Who writes the notes and marks attendance is for the committee to decide.</p>
+  <p class="note">By default the President, Vice President, General Secretary and Joint Secretary write the notes and mark attendance; the President can change this.</p>
 </section>
 
 <section id="maintenance">
@@ -360,12 +362,16 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="polls">
   <h2>Polls for colony decisions</h2>
-  <p>For decisions such as a repair, a vendor or a date, the committee can ask the whole colony in a poll. It opens and closes at set times.</p>
+  <p>For decisions such as a repair, a vendor or a date, the committee can ask the whole colony in a poll. When creating one, the committee chooses:</p>
   <ul class="plain">
-    <li>Each plot has one vote, cast by any member of that plot (proposed).</li>
-    <li>While a poll is open, nobody sees the running count. When it closes, everyone sees the result and how many plots took part.</li>
-    <li>A poll can be open, where the committee can see which plot chose what, or secret, where nobody can see who chose what.</li>
-    <li>A vote cannot be changed after it is cast. A poll that has votes cannot be edited, only cancelled with a reason.</li>
+    <li>the question and two or more answers, and when voting opens and closes (it closes by itself);</li>
+    <li><strong>open</strong> or <strong>secret</strong>: in a secret poll nobody, not even the President or the change log, can see which answer a member chose, only that they voted;</li>
+    <li>whether the running counts are shown <strong>while voting</strong> or only <strong>after it closes</strong>. If they are hidden, only roles the President has allowed (the President by default) can see counts before it closes.</li>
+  </ul>
+  <ul class="plain">
+    <li>Each member has one vote, whatever the number of plots they own.</li>
+    <li>A vote cannot be changed after it is cast. A poll that has votes cannot be edited, only cancelled with a reason, and the cancelled poll stays visible.</li>
+    <li>When a poll closes, everyone sees the votes for each answer and how many members voted out of all members.</li>
     <li>A poll shows what the colony thinks. It does not replace the president election or the colony rules.</li>
   </ul>
 </section>
@@ -411,31 +417,35 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="who">
   <h2>Who can do what</h2>
-  <p>The committee is the President, Vice President, General Secretary, Joint Secretary and Treasurer. "To decide" means the committee needs to choose.</p>
+  <p>The committee is the President, Vice President, General Secretary, Joint Secretary and Treasurer. This table shows how the app starts. The President can change most of these on the Roles screen. Some rules never change: money entries need a second person, approved entries are locked, secret votes stay secret, and only the President changes roles or decides plot requests.</p>
   <div class="tbl">
     <table>
       <thead><tr><th>Action</th><th>Member</th><th>Treasurer</th><th>President</th><th>VP, GS, JS</th></tr></thead>
       <tbody>
         <tr><td>See expenses, complaints, events, photos</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Raise a complaint, add a comment</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Enter an expense</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td><td class="n0">No</td></tr>
-        <tr><td>Approve an expense</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
-        <tr><td>Change a complaint's stage (proposed)</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Create events, upload photos and videos</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
-        <tr><td>Remove a comment</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
-                <tr><td>See the colony map and plot owners' names</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>See mobile numbers on the map</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
-                <tr><td>See meetings, notes, attendees, action items</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Create a meeting, write notes, mark attendance</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
-        <tr><td>Update an action item's status</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td><td class="q">To decide</td></tr>
-                <tr><td>See own plot's maintenance dues and balance</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Set the maintenance fee</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
-        <tr><td>Record a maintenance payment</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td><td class="n0">No</td></tr>
-        <tr><td>Confirm a maintenance payment (proposed)</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Raise a complaint</td><td class="y">Yes</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Add a comment</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Remove a comment</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Change a complaint's stage</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Enter an expense</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Approve an expense (never the person who entered it)</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Create events, upload photos and videos</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>See the colony map and plot owners' names</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>See a member's mobile number</td><td class="q">If they share it</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>See meetings, notes, attendees, action items</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Create a meeting, write notes, mark attendance</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Update an action item's status</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>See own plot's maintenance dues and balance</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
         <tr><td>See every plot's paid or unpaid status</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Vote in a poll (one per plot)</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Create or cancel a poll (proposed)</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
-        <tr><td>Add or remove members, set roles</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Set the maintenance fee and the membership fee amounts</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Record a payment (a different person must confirm it)</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Confirm a payment</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Raise monthly dues or a fee request</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Vote in a poll (one vote per member)</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Create or cancel a poll</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>See an open poll's counts before it closes</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
+        <tr><td>Ask to add or remove a plot on your own record</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+        <tr><td>Add or remove members, set roles, transfer a plot, decide plot requests</td><td class="n0">No</td><td class="n0">No</td><td class="y">Yes</td><td class="n0">No</td></tr>
         <tr><td>Read the change log</td><td class="n0">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
       </tbody>
     </table>
@@ -457,20 +467,13 @@ footer { color: var(--muted); font-size: 0.9rem; }
 </section>
 
 <section id="decide">
-  <h2>What we need to decide together</h2>
+  <h2>What we still need to settle together</h2>
+  <p>Most of the earlier questions now have a starting answer, shown in the table above; the President can change it later on the Roles screen. Payment screenshots are seen by the committee only, and meeting notes are visible to members as soon as they are saved. What is left:</p>
   <ul class="plain">
-    <li>Who can create events and upload photos and videos.</li>
-    <li>Who can remove a comment.</li>
-    <li>The video size limit.</li>
-    <li>Whether mobile numbers appear on the map, and who can see them.</li>
-    <li>Who creates meetings, writes the notes and marks attendance.</li>
-    <li>Whether meeting notes need approval before members see them.</li>
-    <li>Who can update the status of an action item.</li>
-    <li>Who sees each plot's maintenance dues, and who confirms maintenance payments.</li>
-    <li>Which plots count as independent houses and which as open plots.</li>
-    <li>Who can create polls, and whether secret polls are allowed.</li>
-    <li>Whether every member is happy for payment screenshots to be visible to all.</li>
+    <li>The video size limit (about 100 MB is the starting setting).</li>
+    <li>Which plots count as independent houses and which as open plots (this sets the membership fee).</li>
     <li>Who keeps the second copy of the sign-in backup codes.</li>
+    <li>Whether members are happy that the committee office-holders' mobile numbers are visible to every member, and that other members' numbers are visible only to the committee unless the member chooses to share them.</li>
   </ul>
   <p class="note">Cost to the colony: nothing. The website hosting and the Google Drive storage used are free.</p>
 </section>
@@ -631,10 +634,12 @@ footer { color: var(--muted); font-size: 0.9rem; }
 <section id="te-events">
   <h2>కార్యక్రమాలు, ఫోటోలు, వీడియోలు</h2>
   <ul class="plain">
-    <li>కార్యక్రమాలు తేదీ, వివరాలు, వాటి ఫోటోలు, వీడియోలతో జాబితా అవుతాయి.</li>
+    <li>కార్యక్రమాలు తేదీ, స్థలం, వివరాలు, వాటి ఫోటోలు, వీడియోలతో జాబితా అవుతాయి.</li>
     <li>ఫోటోలు అప్‌లోడ్ చేసినప్పుడు వాటంతట అవే చిన్నవి అవుతాయి. కాబట్టి ఎవరూ పరిమాణం మార్చాల్సిన పని లేదు, మన ఉచిత స్థలం సంవత్సరాల పాటు సరిపోతుంది.</li>
-    <li>వీడియోలు Google Drive సొంత ప్లేయర్‌లో తెరుచుకుంటాయి. అధ్యక్షుడు చేర్చిన Gmail తో Drive లో సైన్ ఇన్ అయి ఉండాలి.</li>
-    <li>మన ఉచిత స్థలం 15 GB. వీడియో ఫైళ్లకు పరిమితి ఉంటుంది, సుమారు 100 MB (ఖరారు కావాలి).</li>
+    <li>వీడియో చేర్చాలంటే అనుమతి ఉన్న వ్యక్తి యాప్‌లో దాన్ని ఎంచుకుంటారు. యాప్ దాన్ని కాలనీ సొంత YouTube ఛానెల్‌కు "అన్‌లిస్టెడ్" వీడియోగా పంపుతుంది. చేర్చేవారికి YouTube ఖాతా అక్కర్లేదు, వీడియో మన Drive స్థలాన్ని తీసుకోదు.</li>
+    <li>సభ్యులు వీడియోలను యాప్ లోపలే చూస్తారు. ఆ ప్లేయర్‌లో వెబ్ చిరునామా ఉండదు, షేర్ బటన్ ఉండదు. వీడియో కాని ఫైల్ లేదా పరిమితి (సుమారు 100 MB, కమిటీ మార్చగల సెట్టింగ్) దాటిన ఫైల్ స్పష్టమైన సందేశంతో తిరస్కరించబడుతుంది. కనెక్షన్ తెగితే అప్‌లోడ్ ఆగిన చోటి నుంచే కొనసాగుతుంది.</li>
+    <li>గమనించండి: "అన్‌లిస్టెడ్" అనేది అడ్డుకట్ట మాత్రమే, తాళం కాదు. వీడియో ఐడి తెలిసినవారు దాన్ని చూడగలరు. కాబట్టి వీడియోలో రహస్యమైనది ఏదీ పెట్టకండి.</li>
+    <li>ఫోటోలు మొదటి విడుదల నుంచే పనిచేస్తాయి. కాలనీ నిజమైన YouTube ఛానెల్‌తో పరీక్షించిన తర్వాత వీడియో అప్‌లోడ్ ప్రారంభమవుతుంది.</li>
   </ul>
 </section>
 
@@ -647,7 +652,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>ప్లాట్లు యాప్‌లోని మిగతా భాగాలతో కలుస్తాయి, ఉదాహరణకు ఒక ప్లాట్ కోసం వచ్చిన ఫిర్యాదులు చూడటం (ప్రతిపాదన).</li>
     <li>మ్యాప్ ఇంకా పూర్తవుతోంది. A-61 నుండి A-68 వంటి కొన్ని ప్లాట్లను ఇంకా గుర్తించాలి, కొందరు సభ్యుల ప్లాట్లు కూడా ఇంకా కనుగొనబడలేదు.</li>
   </ul>
-  <p class="note">ఈ రోజు మ్యాప్‌లో సభ్యుల మొబైల్ నంబర్లు కనిపిస్తున్నాయి. యాప్‌లో మొబైల్ నంబర్లు చూపాలా, ఎవరికి చూపాలా అనేది కమిటీ నిర్ణయించాలి.</p>
+  <p class="note">యాప్‌లో సభ్యుని మొబైల్ నంబర్ కమిటీకి కనిపిస్తుంది; ప్రతి సభ్యునికీ కనిపించేది కమిటీ పదవుల్లో ఉన్నవారిది, లేదా తమ నంబర్ పంచుకోవాలని ఎంచుకున్న సభ్యులదే.</p>
 </section>
 
 <section id="te-meetings">
@@ -684,7 +689,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>సమావేశం తర్వాత నోట్స్ భద్రపరుస్తారు, సభ్యులందరికీ కనిపిస్తాయి. అజెండా పత్రాలు, సంతకం చేసిన మినిట్స్ ఫోటోలు వంటి ఫైళ్లు కాలనీ Drive లో ఉంటాయి.</li>
     <li>ప్రతి చేయవలసిన పనికి బాధ్యులు, గడువు తేదీ, స్థితి (తెరిచి ఉంది లేదా పూర్తయింది) ఉంటాయి. పూర్తికాని పనులు జాబితాలోనే ఉండి తదుపరి సమావేశంలో సమీక్షించబడతాయి. గడువు దాటినవాటికి గుర్తు ఉంటుంది.</li>
   </ul>
-  <p class="note">నోట్స్ ఎవరు రాస్తారు, హాజరు ఎవరు నమోదు చేస్తారు అనేది కమిటీ నిర్ణయించాలి.</p>
+  <p class="note">డిఫాల్ట్‌గా అధ్యక్షుడు, ఉపాధ్యక్షుడు, ప్రధాన కార్యదర్శి, సంయుక్త కార్యదర్శి నోట్స్ రాస్తారు, హాజరు నమోదు చేస్తారు; అధ్యక్షుడు దీన్ని మార్చవచ్చు.</p>
 </section>
 
 <section id="te-maintenance">
@@ -724,12 +729,16 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="te-polls">
   <h2>నిర్ణయాల కోసం పోల్స్</h2>
-  <p>ఒక మరమ్మతు, ఒక విక్రేత లేదా ఒక తేదీ వంటి నిర్ణయాల కోసం కమిటీ మొత్తం కాలనీని పోల్ ద్వారా అడగవచ్చు. పోల్ నిర్ణీత సమయాల్లో తెరుచుకుని ముగుస్తుంది.</p>
+  <p>ఒక మరమ్మతు, ఒక విక్రేత లేదా ఒక తేదీ వంటి నిర్ణయాల కోసం కమిటీ మొత్తం కాలనీని పోల్ ద్వారా అడగవచ్చు. పోల్ సృష్టించేటప్పుడు కమిటీ ఎంచుకునేవి:</p>
   <ul class="plain">
-    <li>ప్రతి ప్లాట్‌కు ఒక ఓటు. ఆ ప్లాట్ సభ్యుల్లో ఎవరైనా వేయవచ్చు (ప్రతిపాదన).</li>
-    <li>పోల్ తెరిచి ఉన్నప్పుడు ఎవరికీ లెక్కలు కనిపించవు. ముగిసిన తర్వాత ఫలితం, ఎన్ని ప్లాట్లు పాల్గొన్నాయో అందరికీ కనిపిస్తాయి.</li>
-    <li>పోల్ బహిరంగం కావచ్చు, అప్పుడు ఏ ప్లాట్ ఏది ఎంచుకుందో కమిటీ చూడగలదు. లేదా రహస్యం కావచ్చు, అప్పుడు ఎవరు ఏది ఎంచుకున్నారో ఎవరికీ తెలియదు.</li>
-    <li>వేసిన ఓటును మార్చలేరు. ఓట్లు పడిన పోల్‌ను మార్చకూడదు, కారణంతో రద్దు మాత్రమే చేయవచ్చు.</li>
+    <li>ప్రశ్న, రెండు లేదా అంతకంటే ఎక్కువ సమాధానాలు, ఓటింగ్ ఎప్పుడు మొదలై ఎప్పుడు ముగుస్తుందో (అది తనంతట తానే ముగుస్తుంది);</li>
+    <li><strong>బహిరంగం</strong> లేదా <strong>రహస్యం</strong>: రహస్య పోల్‌లో సభ్యుడు ఏ సమాధానం ఎంచుకున్నారో ఎవరికీ, అధ్యక్షుడికి లేదా మార్పుల లాగ్‌కు కూడా తెలియదు, ఓటు వేశారని మాత్రమే తెలుస్తుంది;</li>
+    <li>లెక్కలు <strong>ఓటింగ్ జరుగుతుండగా</strong> చూపాలా లేక <strong>ముగిసిన తర్వాత మాత్రమే</strong> చూపాలా. దాచి ఉంటే, అధ్యక్షుడు అనుమతించిన పాత్రలు (డిఫాల్ట్‌గా అధ్యక్షుడు) మాత్రమే ముగియక ముందు లెక్కలు చూడగలరు.</li>
+  </ul>
+  <ul class="plain">
+    <li>ప్లాట్లు ఎన్ని ఉన్నా ప్రతి సభ్యునికి ఒకే ఓటు.</li>
+    <li>వేసిన ఓటును మార్చలేరు. ఓట్లు పడిన పోల్‌ను మార్చకూడదు, కారణంతో రద్దు మాత్రమే చేయవచ్చు; రద్దయిన పోల్ కనిపిస్తూనే ఉంటుంది.</li>
+    <li>పోల్ ముగిశాక ప్రతి సమాధానానికి ఎన్ని ఓట్లు వచ్చాయో, మొత్తం సభ్యుల్లో ఎంతమంది ఓటు వేశారో అందరికీ కనిపిస్తుంది.</li>
     <li>పోల్ కాలనీ అభిప్రాయాన్ని చూపుతుంది. ఇది అధ్యక్ష ఎన్నికకు, కాలనీ నియమాలకు ప్రత్యామ్నాయం కాదు.</li>
   </ul>
 </section>
@@ -775,31 +784,35 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="te-who">
   <h2>ఎవరు ఏం చేయగలరు</h2>
-  <p>కమిటీ అంటే అధ్యక్షుడు, ఉపాధ్యక్షుడు, ప్రధాన కార్యదర్శి, సంయుక్త కార్యదర్శి, కోశాధికారి. "నిర్ణయించాలి" అంటే కమిటీ ఎంచుకోవాలి.</p>
+  <p>కమిటీ అంటే అధ్యక్షుడు, ఉపాధ్యక్షుడు, ప్రధాన కార్యదర్శి, సంయుక్త కార్యదర్శి, కోశాధికారి. యాప్ ఇలా మొదలవుతుంది. వీటిలో చాలావాటిని అధ్యక్షుడు "పాత్రలు" తెరలో మార్చవచ్చు. కొన్ని నియమాలు ఎప్పటికీ మారవు: డబ్బు నమోదులకు రెండో వ్యక్తి కావాలి, ఆమోదించిన నమోదులు లాక్ అవుతాయి, రహస్య ఓట్లు రహస్యంగానే ఉంటాయి, పాత్రలు మార్చడం, ప్లాట్ అభ్యర్థనలపై నిర్ణయం అధ్యక్షుడు మాత్రమే.</p>
   <div class="tbl">
     <table>
       <thead><tr><th>చర్య</th><th>సభ్యుడు</th><th>కోశాధికారి</th><th>అధ్యక్షుడు</th><th>ఉపాధ్యక్షుడు, ప్ర. కార్యదర్శి, సం. కార్యదర్శి</th></tr></thead>
       <tbody>
         <tr><td>ఖర్చులు, ఫిర్యాదులు, కార్యక్రమాలు, ఫోటోలు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>ఫిర్యాదు చేయడం, వ్యాఖ్య జోడించడం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>ఖర్చు నమోదు చేయడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td><td class="n0">కాదు</td></tr>
-        <tr><td>ఖర్చును ఆమోదించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
-        <tr><td>ఫిర్యాదు దశను మార్చడం (ప్రతిపాదన)</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>కార్యక్రమాలు సృష్టించడం, ఫోటోలు, వీడియోలు అప్‌లోడ్ చేయడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
-        <tr><td>వ్యాఖ్యను తొలగించడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
-                <tr><td>కాలనీ మ్యాప్, ప్లాట్ యజమానుల పేర్లు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>మ్యాప్‌లో మొబైల్ నంబర్లు చూడటం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
-                <tr><td>సమావేశాలు, నోట్స్, హాజరైనవారు, చేయవలసిన పనులు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>సమావేశం సృష్టించడం, నోట్స్ రాయడం, హాజరు నమోదు</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
-        <tr><td>చేయవలసిన పని స్థితిని మార్చడం</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td><td class="q">నిర్ణయించాలి</td></tr>
-                <tr><td>తమ ప్లాట్ నిర్వహణ రుసుము, బాకీ చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>నిర్వహణ రుసుము నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
-        <tr><td>నిర్వహణ చెల్లింపు నమోదు చేయడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td><td class="n0">కాదు</td></tr>
-        <tr><td>నిర్వహణ చెల్లింపును నిర్ధారించడం (ప్రతిపాదన)</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
-        <tr><td>ప్రతి ప్లాట్ చెల్లింపు స్థితి చూడటం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>పోల్‌లో ఓటు వేయడం (ప్లాట్‌కు ఒకటి)</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>పోల్ సృష్టించడం, రద్దు చేయడం (ప్రతిపాదన)</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
-        <tr><td>సభ్యులను చేర్చడం, తొలగించడం, పాత్రలు నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>ఫిర్యాదు చేయడం</td><td class="y">అవును</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>వ్యాఖ్య జోడించడం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>వ్యాఖ్యను తొలగించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>ఫిర్యాదు దశను మార్చడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>ఖర్చు నమోదు చేయడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>ఖర్చును ఆమోదించడం (నమోదు చేసినవారు కాదు)</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>కార్యక్రమాలు సృష్టించడం, ఫోటోలు, వీడియోలు అప్‌లోడ్ చేయడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>కాలనీ మ్యాప్, ప్లాట్ యజమానుల పేర్లు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>సభ్యుని మొబైల్ నంబర్ చూడటం</td><td class="q">వారు పంచుకుంటే</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>సమావేశాలు, నోట్స్, హాజరైనవారు, చేయవలసిన పనులు చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>సమావేశం సృష్టించడం, నోట్స్ రాయడం, హాజరు నమోదు</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>చేయవలసిన పని స్థితిని మార్చడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>తన ప్లాట్ నిర్వహణ బాకీలు, నిల్వ చూడటం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>ప్రతి ప్లాట్ చెల్లించిందా లేదా చూడటం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>నిర్వహణ రుసుము, సభ్యత్వ రుసుము మొత్తాలను నిర్ణయించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>చెల్లింపును నమోదు చేయడం (మరొకరు నిర్ధారించాలి)</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>చెల్లింపును నిర్ధారించడం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>నెలవారీ బాకీలు లేదా రుసుము అభ్యర్థన పెట్టడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>పోల్‌లో ఓటు వేయడం (సభ్యునికి ఒక ఓటు)</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>పోల్ సృష్టించడం లేదా రద్దు చేయడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>పోల్ ముగియక ముందే లెక్కలు చూడటం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
+        <tr><td>తన రికార్డులో ప్లాట్ చేర్చమని లేదా తీసివేయమని అడగడం</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
+        <tr><td>సభ్యులను చేర్చడం/తీసివేయడం, పాత్రలు, ప్లాట్ బదిలీ, ప్లాట్ అభ్యర్థనల నిర్ణయం</td><td class="n0">కాదు</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="n0">కాదు</td></tr>
         <tr><td>మార్పుల లాగ్ చదవడం</td><td class="n0">కాదు</td><td class="y">అవును</td><td class="y">అవును</td><td class="y">అవును</td></tr>
       </tbody>
     </table>
@@ -821,20 +834,13 @@ footer { color: var(--muted); font-size: 0.9rem; }
 </section>
 
 <section id="te-decide">
-  <h2>కలిసి నిర్ణయించాల్సినవి</h2>
+  <h2>ఇంకా కలిసి నిర్ణయించాల్సినవి</h2>
+  <p>ముందటి ప్రశ్నల్లో చాలావాటికి ఇప్పుడు ప్రారంభ సమాధానం పైన పట్టికలో ఉంది; అధ్యక్షుడు దాన్ని తర్వాత "పాత్రలు" తెరలో మార్చవచ్చు. చెల్లింపు స్క్రీన్‌షాట్‌లు కమిటీకి మాత్రమే కనిపిస్తాయి, సమావేశ నోట్స్ సేవ్ చేసిన వెంటనే సభ్యులకు కనిపిస్తాయి. మిగిలినవి:</p>
   <ul class="plain">
-    <li>కార్యక్రమాలు సృష్టించి, ఫోటోలు, వీడియోలు అప్‌లోడ్ చేసేదెవరు.</li>
-    <li>వ్యాఖ్యను తొలగించగలిగేదెవరు.</li>
-    <li>వీడియో పరిమాణ పరిమితి.</li>
-    <li>మ్యాప్‌లో మొబైల్ నంబర్లు కనిపించాలా, ఎవరికి కనిపించాలి.</li>
-    <li>సమావేశాలు సృష్టించి, నోట్స్ రాసి, హాజరు నమోదు చేసేదెవరు.</li>
-    <li>సభ్యులకు కనిపించే ముందు సమావేశ నోట్స్‌కు ఆమోదం కావాలా.</li>
-    <li>చేయవలసిన పని స్థితిని మార్చగలిగేదెవరు.</li>
-    <li>ప్రతి ప్లాట్ నిర్వహణ రుసుము వివరాలు ఎవరికి కనిపించాలి, చెల్లింపులను ఎవరు నిర్ధారిస్తారు.</li>
-    <li>ఏ ప్లాట్లు ఇల్లు ఉన్నవి, ఏవి ఖాళీ ప్లాట్లు.</li>
-    <li>పోల్స్ ఎవరు సృష్టించగలరు, రహస్య పోల్స్ అనుమతించాలా.</li>
-    <li>చెల్లింపు స్క్రీన్‌షాట్‌లు అందరికీ కనిపించడానికి అందరూ అంగీకరిస్తారా.</li>
+    <li>వీడియో పరిమాణ పరిమితి (ప్రారంభ సెట్టింగ్ సుమారు 100 MB).</li>
+    <li>ఏ ప్లాట్లు ఇల్లు ఉన్నవి, ఏవి ఖాళీ ప్లాట్లు (దీని ఆధారంగా సభ్యత్వ రుసుము నిర్ణయమవుతుంది).</li>
     <li>సైన్-ఇన్ బ్యాకప్ కోడ్‌ల రెండో కాపీని ఎవరు ఉంచుకుంటారు.</li>
+    <li>కమిటీ పదవుల్లో ఉన్నవారి మొబైల్ నంబర్లు ప్రతి సభ్యునికీ కనిపించడం, ఇతర సభ్యుల నంబర్లు వారు పంచుకోవాలనుకుంటేనే తప్ప కమిటీకి మాత్రమే కనిపించడం — దీనికి సభ్యులందరూ అంగీకరిస్తారా.</li>
   </ul>
   <p class="note">కాలనీకి ఖర్చు: ఏమీ లేదు. వాడే వెబ్‌సైట్ హోస్టింగ్, Google Drive స్థలం ఉచితం.</p>
 </section>
