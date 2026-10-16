@@ -148,8 +148,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>Members list</h3><p>The president decides who has access and what each person can do. Only the president and committee see this list.</p></div>
     <div class="part"><h3>Colony map</h3><p>A zoomable map of the colony with every plot labelled. Search by plot number or member name, and tap a plot to see its details.</p></div>
     <div class="part"><h3>General body meetings</h3><p>Dates, attendees, notes and action items from every meeting, with owners and due dates.</p></div>
-    <div class="part"><h3>Monthly maintenance</h3><p>The monthly fee for each plot, set by the president, with payments and dues.</p></div>
-    <div class="part"><h3>Polls</h3><p>Quick colony-wide polls on decisions, with one vote per plot.</p></div>
+    <div class="part"><h3>Monthly maintenance</h3><p>The monthly fee for each member, set by the president, with payments and dues.</p></div>
+    <div class="part"><h3>Polls</h3><p>Quick colony-wide polls on decisions, with one vote per member.</p></div>
   </div>
   <p class="muted">The app only records things. No money moves through it.</p>
 </section>
@@ -327,7 +327,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="maintenance">
   <h2>Monthly maintenance</h2>
-  <p>The president sets the monthly maintenance fee, with one rate for plots that have an independent house and another for open plots. Each plot owes the fee for its category every month.</p>
+  <p>The president sets one monthly maintenance fee, the same for every member however many plots they hold. A member with no plot owes nothing. Only the one-time membership fee for new members depends on the plot's category.</p>
   <figure>
     <div class="dia-box">
       <svg class="dia" viewBox="0 0 440 312" role="img" aria-label="The president sets the fees, each plot owes its monthly fee, the treasurer records a payment, and the president confirms it so the plot balance falls.">
@@ -354,10 +354,10 @@ footer { color: var(--muted); font-size: 0.9rem; }
   <ul class="plain">
     <li>A fee change applies from the month the president chooses. Earlier months keep the old fee.</li>
     <li>The treasurer records a payment against a plot and the months it covers, with proof. The president confirms it before it counts (proposed). A mistake is fixed with a correcting entry.</li>
-    <li>Each member sees their own plot's dues, payments and balance. The committee sees which plots have paid. Everyone sees the colony totals collected and outstanding (proposed).</li>
+    <li>Each member sees their own dues, payments and balance. The committee sees which plots have paid. Everyone sees the colony totals collected and outstanding (proposed).</li>
     <li>Late fees, reminders and online payment are not part of the first version.</li>
   </ul>
-  <p class="note">Before the first month, each plot's category (independent house or open plot) has to be confirmed by the president.</p>
+  <p class="note">A plot's category (independent house or open plot) only matters for the one-time membership fee; the president confirms it before new members join.</p>
 </section>
 
 <section id="polls">
@@ -515,8 +515,8 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <div class="part"><h3>సభ్యుల జాబితా</h3><p>ఎవరు యాప్ వాడవచ్చు, ఎవరు ఏం చేయవచ్చు అనేది అధ్యక్షుడు నిర్ణయిస్తారు. ఈ జాబితాను అధ్యక్షుడు, కమిటీ మాత్రమే చూడగలరు.</p></div>
     <div class="part"><h3>కాలనీ మ్యాప్</h3><p>ప్రతి ప్లాట్ పేరుతో కాలనీ మ్యాప్, జూమ్ చేయవచ్చు. ప్లాట్ నంబర్ లేదా సభ్యుని పేరుతో వెతకవచ్చు, ప్లాట్ నొక్కితే వివరాలు కనిపిస్తాయి.</p></div>
     <div class="part"><h3>సర్వసభ్య సమావేశాలు</h3><p>ప్రతి సమావేశం తేదీ, హాజరైనవారు, నోట్స్, చేయవలసిన పనులు, బాధ్యులు, గడువు తేదీలతో.</p></div>
-    <div class="part"><h3>నెలవారీ నిర్వహణ రుసుము</h3><p>ప్రతి ప్లాట్‌కు నెలవారీ రుసుము అధ్యక్షుడు నిర్ణయిస్తారు, చెల్లింపులు, బాకీలతో.</p></div>
-    <div class="part"><h3>పోల్స్</h3><p>నిర్ణయాలపై కాలనీ అంతటా పోల్, ప్లాట్‌కు ఒక ఓటు.</p></div>
+    <div class="part"><h3>నెలవారీ నిర్వహణ రుసుము</h3><p>ప్రతి సభ్యునికి నెలవారీ రుసుము అధ్యక్షుడు నిర్ణయిస్తారు, చెల్లింపులు, బాకీలతో.</p></div>
+    <div class="part"><h3>పోల్స్</h3><p>నిర్ణయాలపై కాలనీ అంతటా పోల్, సభ్యునికి ఒక ఓటు.</p></div>
   </div>
   <p class="muted">ఈ యాప్ కేవలం రికార్డు చేస్తుంది. దీని ద్వారా డబ్బు బదిలీ జరగదు.</p>
 </section>
@@ -694,7 +694,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
 
 <section id="te-maintenance">
   <h2>నెలవారీ నిర్వహణ రుసుము</h2>
-  <p>అధ్యక్షుడు నెలవారీ నిర్వహణ రుసుమును నిర్ణయిస్తారు: ఇల్లు ఉన్న ప్లాట్లకు ఒక రేటు, ఖాళీ ప్లాట్లకు మరొక రేటు. ప్రతి ప్లాట్ ప్రతి నెలా తన వర్గానికి సంబంధించిన రుసుము చెల్లించాలి.</p>
+  <p>అధ్యక్షుడు నెలకు ఒకే నిర్వహణ రుసుమును నిర్ణయిస్తారు; సభ్యునికి ఎన్ని ప్లాట్లు ఉన్నా అది అందరికీ ఒకటే. ప్లాట్ లేని సభ్యుడు ఏమీ చెల్లించనవసరం లేదు. ప్లాట్ వర్గాన్ని బట్టి మారేది కొత్త సభ్యుల ఒక్కసారి సభ్యత్వ రుసుము మాత్రమే.</p>
   <figure>
     <div class="dia-box">
       <svg class="dia" viewBox="0 0 440 312" role="img" aria-label="అధ్యక్షుడు రుసుము నిర్ణయిస్తారు, ప్రతి ప్లాట్ నెలవారీ రుసుము చెల్లించాలి, కోశాధికారి చెల్లింపు నమోదు చేస్తారు, అధ్యక్షుడు నిర్ధారిస్తారు, అప్పుడు ప్లాట్ బాకీ తగ్గుతుంది.">
@@ -724,7 +724,7 @@ footer { color: var(--muted); font-size: 0.9rem; }
     <li>ప్రతి సభ్యుడు తన ప్లాట్ రుసుములు, చెల్లింపులు, బాకీని చూడగలరు. ఏ ప్లాట్లు చెల్లించాయో కమిటీ చూడగలదు. వసూలైన, ఇంకా రావాల్సిన మొత్తం కాలనీ మొత్తాలు అందరికీ కనిపిస్తాయి (ప్రతిపాదన).</li>
     <li>ఆలస్య రుసుములు, గుర్తుచేతలు, ఆన్‌లైన్ చెల్లింపు మొదటి వెర్షన్‌లో లేవు.</li>
   </ul>
-  <p class="note">మొదటి నెలకు ముందు ప్రతి ప్లాట్ వర్గం (ఇల్లు ఉన్న ప్లాట్ లేదా ఖాళీ ప్లాట్) అధ్యక్షుడు నిర్ధారించాలి.</p>
+  <p class="note">ప్లాట్ వర్గం (ఇల్లు ఉన్న ప్లాట్ లేదా ఖాళీ ప్లాట్) కొత్త సభ్యుల ఒక్కసారి సభ్యత్వ రుసుముకు మాత్రమే వర్తిస్తుంది; కొత్త సభ్యులు చేరే ముందు అధ్యక్షుడు దాన్ని నిర్ధారించాలి.</p>
 </section>
 
 <section id="te-polls">
